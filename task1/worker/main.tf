@@ -68,7 +68,7 @@ resource "null_resource" "cmd" {
 resource "null_resource" "ansible-worker" {
   count     = var.number_instances
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i '${aws_spot_instance_request.worker[*].public_ip},' ./ansible/site.yaml -u ubuntu"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu"
   }
 
   depends_on = [null_resource.cmd]
