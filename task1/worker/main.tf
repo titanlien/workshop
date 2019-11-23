@@ -1,16 +1,26 @@
+data "aws_ami" "work" {
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["ubuntu-bionic-18.04-amd64-server-20180522-dotnetcore-2018.07.11"]
+  }
+
+}
+
 data "aws_availability_zones" "this" {}
 
 resource "aws_spot_instance_request" "worker" {
   count                  = var.number_instances
   availability_zone      = data.aws_availability_zones.this.names[count.index]
-  ami                    = "ami-07af7368ebacbf345"
+  ami                    = data.aws_ami.work.id
   instance_type          = "t3a.micro"
   key_name               = var.key_name
-  vpc_security_group_ids = ["${var.sg-id}"]
+  vpc_security_group_ids = [var.sg-id]
   spot_price             = "0.01"
   spot_type              = "one-time"
   wait_for_fulfillment   = true
-  subnet_id              = var.vpc.public_subnets[0]
+  subnet_id              = var.vpc.public_subnets[count.index]
 
   # force Terraform to wait until a connection can be made, so that Ansible doesn't fail when trying to provision
   provisioner "remote-exec" {
