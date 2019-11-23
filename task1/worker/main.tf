@@ -64,12 +64,3 @@ resource "null_resource" "cmd" {
     command = "echo '${data.template_file.inventory.rendered}' > ./ansible/inventory"
   }
 }
-
-resource "null_resource" "ansible-worker" {
-  count     = var.number_instances
-  provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu"
-  }
-
-  depends_on = [null_resource.cmd]
-}

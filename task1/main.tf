@@ -25,3 +25,11 @@ module "worker" {
   vpc              = module.vpc
   sg-id            = aws_security_group.allow_ssh.id
 }
+
+resource "null_resource" "ansible-worker" {
+  provisioner "local-exec" {
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu"
+  }
+
+  depends_on = [module.worker]
+}
