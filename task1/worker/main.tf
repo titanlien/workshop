@@ -65,3 +65,8 @@ resource "null_resource" "export" {
     command = "echo '${data.template_file.inventory.rendered}' > ./ansible/inventory"
   }
 }
+
+output spot_instance_ids_worker {
+  description = "List of spot instance IDs of worker"
+  value = aws_spot_instance_request.worker.*.spot_instance_id
+}

@@ -3,3 +3,6 @@
   roles:
     - role: geerlingguy.java
       become: yes
+  post_tasks:
+    - name: Launch java backend app
+      shell: "java -jar ~/demo-0.0.1-SNAPSHOT.jar & sleep 5"

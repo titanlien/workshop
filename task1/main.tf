@@ -23,7 +23,7 @@ module "worker" {
   region           = local.regions[terraform.workspace]
   number_instances = local.worker_instance_count[terraform.workspace]
   vpc              = module.vpc
-  sg-id            = aws_security_group.allow_ssh.id
+  sg-id            = aws_security_group.allow_task1.id
 }
 
 resource "null_resource" "ansible-install-java" {

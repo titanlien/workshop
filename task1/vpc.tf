@@ -2,9 +2,9 @@ provider "aws" {
   region = local.regions[terraform.workspace]
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
-  description = "Allow port 22 inbound traffic"
+resource "aws_security_group" "allow_task1" {
+  name        = "sg_task1"
+  description = "Allow port 22 and 80 inbound traffic"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
@@ -12,6 +12,13 @@ resource "aws_security_group" "allow_ssh" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["217.86.133.43/32"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -42,3 +49,11 @@ module "vpc" {
   }
 }
 
+resource "aws_security_group_rule" "allow_internal" {
+  type            = "ingress"
+  from_port       = 0
+  to_port         = 65535
+  protocol        = "all"
+  self            = true
+  security_group_id = aws_security_group.allow_task1.id
+}
