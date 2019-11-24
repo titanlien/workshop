@@ -26,7 +26,10 @@ module "worker" {
   sg-id            = aws_security_group.allow_ssh.id
 }
 
-resource "null_resource" "ansible-worker" {
+resource "null_resource" "ansible-install-java" {
+  triggers = {
+    provision = local.worker_instance_count[terraform.workspace]
+  }
   provisioner "local-exec" {
     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu"
   }

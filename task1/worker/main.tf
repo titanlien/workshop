@@ -55,7 +55,7 @@ data "template_file" "inventory" {
   }
 }
 
-resource "null_resource" "cmd" {
+resource "null_resource" "export" {
   triggers = {
     template_rendered = data.template_file.inventory.rendered
   }
