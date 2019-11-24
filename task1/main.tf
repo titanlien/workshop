@@ -13,8 +13,8 @@ locals {
   }
 
   worker_instance_count = {
-    dev        = "1"
-    staging    = "2"
+    dev        = "2"
+    staging    = "5"
   }
 }
 
