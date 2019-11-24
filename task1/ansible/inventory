@@ -1,3 +1,8 @@
 [nodes]
-18.185.188.51
+18.185.88.32
+[insecuressh:children]
+nodes
+
+[insecuressh:vars]
+ansible_ssh_common_args=-o StrictHostKeyChecking=no
 
