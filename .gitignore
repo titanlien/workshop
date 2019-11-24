@@ -1,2 +1,3 @@
 .terraform/
 errored.tfstate
+task1/ansible/inventory
