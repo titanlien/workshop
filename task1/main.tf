@@ -31,7 +31,7 @@ resource "null_resource" "ansible-install-java" {
     provision = local.worker_instance_count[terraform.workspace]
   }
   provisioner "local-exec" {
-    command = "ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu"
+    command = "ansible-playbook -i ./ansible/inventory --limit nodes ./ansible/java.yml -u ubuntu -b"
   }
 
   depends_on = [module.worker]
