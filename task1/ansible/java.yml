@@ -3,6 +3,16 @@
   roles:
     - role: geerlingguy.java
       become: yes
-  post_tasks:
-    - name: Launch java backend app
-      shell: "java -jar ~/demo-0.0.1-SNAPSHOT.jar & sleep 5"
+  tasks:
+    - name: Upload systemctl configure file
+      copy:
+        src: task1.service
+        dest: /etc/systemd/system/task1.service
+      register: upload_systemctl_config
+
+    - name: Reload systemctl
+      systemd:
+        name: task1
+        daemon_reload: yes
+        state: started
+      when: upload_systemctl_config

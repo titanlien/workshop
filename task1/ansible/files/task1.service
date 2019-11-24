@@ -1,0 +1,11 @@
+[Unit]
+Description=Task 1
+
+[Service]
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/bin/java -jar demo-0.0.1-SNAPSHOT.jar
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
