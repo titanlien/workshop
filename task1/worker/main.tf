@@ -29,7 +29,8 @@ resource "aws_spot_instance_request" "worker" {
   # force Terraform to wait until a connection can be made, so that Ansible doesn't fail when trying to provision
   provisioner "remote-exec" {
     # The connection will use the local SSH agent for authentication
-    inline = ["echo Successfully connected"]
+    inline = ["echo Successfully connected",
+              "wget ${var.java-app-url} -P ~/"]
 
     connection {
       user        = "ubuntu"
