@@ -10,10 +10,10 @@ services:
     ports:
     - 80:80
     depends_on:
-    - webapp
+    - webapp-1
 
     restart: always
-  webapp:
+  webapp-1:
     image: webapp
     build:
       context: .
