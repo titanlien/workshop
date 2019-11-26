@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  nginx:
+    image: nginx:stable
+    volumes:
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+    ports:
+    - 80:80
+    depends_on:
+    - webapp
+
+    restart: always
+  webapp:
+    image: webapp
+    build:
+      context: .
+      dockerfile: webapp/Dockerfile
