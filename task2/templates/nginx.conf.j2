@@ -1,0 +1,25 @@
+worker_processes 1;
+ 
+events { worker_connections 1024; }
+ 
+http {
+    {% for n in count %}
+    upstream webapp-{{n}} {
+        server webapp-{{n}}:8080;
+    }
+    {% endfor %}
+    server {
+        listen 80;
+        
+        {% for n in count %}
+        location /webapp-{{n}} {
+            proxy_pass         http://webapp-{{n}}/;
+            proxy_redirect     off;
+            proxy_set_header   Host $host;
+            proxy_set_header   X-Real-IP $remote_addr;
+            proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header   X-Forwarded-Host $server_name;
+        }
+        {% endfor %}
+    }
+}

@@ -10,26 +10,16 @@ services:
     ports:
     - 80:80
     depends_on:
-    - webapp-1
-    - webapp-2
-    - webapp-3
+    {% for n in count %}
+    - webapp-{{n}}
+    {% endfor %}
     restart: always
   
-  webapp-1:
+  {% for n in count %}
+  webapp-{{n}}:
     image: webapp
     build:
       context: .
       dockerfile: webapp/Dockerfile
 
-  webapp-2:
-    image: webapp
-    build:
-      context: .
-      dockerfile: webapp/Dockerfile
-
-  webapp-3:
-    image: webapp
-    build:
-      context: .
-      dockerfile: webapp/Dockerfile
-
+  {% endfor %}
