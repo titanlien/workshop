@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import subprocess
 
 from jinja2 import Template, Environment, FileSystemLoader
 
@@ -31,3 +32,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     render_compose(args.web_count)
     render_nginx(args.web_count)
+    subprocess.run(["docker-compose", "up", "-d", "--remove-orphans"])
