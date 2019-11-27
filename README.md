@@ -7,3 +7,14 @@
 * deploy the following Java application on these instances
 * create a load balancer for the Java application on port 80
 ---
+# Task 2
+## Nginx + docker-compose + python
+* creates a new Docker container running nginx and proxies all requests on /<container_name> to the appropriate container and port 
+	* there is only one nginx container running at all times
+	* if the nginx container is down, it needs to be started
+	* when a new application container is created the nginx configuration is updated to proxy requests to the new container
+* creates a new Docker container running Java and deploys demo-0.0.1-SNAPTSHOT.jar from the previous step 
+	* the Docker container publishes container 8080 on a free port between 8000 and 8200
+	* the container name is a unique identifier
+	* container is only created if it does not exist
+	* there can be multiple Docker containers with different names running at the same time
