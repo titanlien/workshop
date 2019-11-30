@@ -15,6 +15,6 @@ app = FastAPI(title="webapp 2", description="return a json object.")
 @app.get(ENDPOINT_RETURN_MESSAGE)
 async def get_message():
     logger.debug(f"Called web-1 /")
-    r = requests.get(url = API_ENDPOINT)
+    r = requests.get(url=API_ENDPOINT)
     data = r.json()
-    return {"id": data['id'], "rev_message": data['message'][::-1]}
+    return {"id": data["id"], "rev_message": data["message"][::-1]}
