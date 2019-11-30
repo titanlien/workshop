@@ -2,11 +2,11 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: webapp-1
+  name: webapp-2
 spec:
   selector:
     matchLabels:
-      app: web-1
+      app: web-2
   replicas: 2
   strategy:
     type: Recreate
@@ -14,11 +14,11 @@ spec:
   template:
     metadata:
       labels:
-        app: web-1
+        app: web-2
     spec:
       containers:
         - name: webapp
-          image: titanlien/webapp1:v2
+          image: titanlien/webapp2:v1
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-1
+  name: webapp-2
   labels:
-    app: web-1
+    app: web-2
 spec:
   type: NodePort
   ports:
@@ -37,4 +37,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: web-1
+    app: web-2
