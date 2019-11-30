@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: titanlien/webapp1:v1
+          image: {{docker_hub_account}}/webapp1:{{webapp_1_tag}}
           imagePullPolicy: Always
           ports:
           - containerPort: 5000

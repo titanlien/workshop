@@ -1,0 +1,4 @@
+---
+docker_hub_account: "titan"
+webapp_1_tag: v1
+webapp_2_tag: v1
