@@ -18,3 +18,18 @@
 	* the container name is a unique identifier
 	* container is only created if it does not exist
 	* there can be multiple Docker containers with different names running at the same time
+
+---
+# Task 3
+# docker + kubectl: deployment + svc
+* Implement a piece of software exposing a JSON document:
+```
+{
+“id”: “1”,
+“message”: “Hello world” }
+```
+when visited with a HTTP client
+* Dockerize the application
+* Put the application to Minikube Kubernetes
+* Create a second application, that utilizes the first and displays reversed message text
+* Automate deployment of the 2 applications using a script
