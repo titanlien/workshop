@@ -17,4 +17,4 @@ async def get_message():
     logger.debug(f"Called web-1 /")
     r = requests.get(url = API_ENDPOINT)
     data = r.json()
-    return {"id": "1", "message": data['message'][::-1]}
+    return {"id": data['id'], "rev_message": data['message'][::-1]}
