@@ -8,12 +8,4 @@ $ pipenv shell && pipenv sync
 ## staging: the number of cluster is 5
 
 # Demo
-https://asciinema.org/a/BRhIFU4OehbZqQnhA1aIfJKKW
-
-* after some troubleshoot
-
-https://asciinema.org/a/snFccRk5KZ7JQwlPM6iOIv1IH
-
-* find the missing argument.
-
-https://asciinema.org/a/wl8SVSS4lqLsP1eDaB9Udw7IV
+https://asciinema.org/a/bFzSGE1iKhpdz2Gy5cMAP1O9V

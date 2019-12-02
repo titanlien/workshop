@@ -70,3 +70,7 @@ output spot_instance_ids_worker {
   description = "List of spot instance IDs of worker"
   value = aws_spot_instance_request.worker.*.spot_instance_id
 }
+
+output spot_instance_private_ip {
+  value = aws_spot_instance_request.worker.*.private_ip
+}
