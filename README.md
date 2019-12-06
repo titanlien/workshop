@@ -33,3 +33,14 @@ when visited with a HTTP client
 * Put the application to Minikube Kubernetes
 * Create a second application, that utilizes the first and displays reversed message text
 * Automate deployment of the 2 applications using a script
+---
+# Task 4
+# Python CLI
+* Please consider the work you submit here a small, but production-ready deliverable, in the sense that you are happy to ship such code, tests and documentation.
+* Write a Roman numeral converter that converts integer numbers into Roman numerals:
+
+```
+func(36)
+
+Output: "XXXVI"
+```
