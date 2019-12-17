@@ -25,8 +25,9 @@
 * Implement a piece of software exposing a JSON document:
 ```
 {
-“id”: “1”,
-“message”: “Hello world” }
+"id": "1",
+"message": "Hello world" 
+}
 ```
 when visited with a HTTP client
 * Dockerize the application
