@@ -9,3 +9,7 @@ $ pipenv shell && pipenv sync
 
 # Demo
 https://asciinema.org/a/bFzSGE1iKhpdz2Gy5cMAP1O9V
+
+# TODO
+* create subdomain in Route 53
+* Setup SSL certificate in IAM
