@@ -6,6 +6,7 @@
 * create 5 new ec2 instances based on Ubuntu 18.04 (bionic)
 * deploy the following Java application on these instances
 * create a load balancer for the Java application on port 80
+* setup route53 to host CNAME record of elb url
 ---
 # Task 2
 ## Nginx + docker-compose + python
