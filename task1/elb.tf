@@ -31,12 +31,3 @@ resource "aws_elb" "task1" {
     Name = "terraform-elb-task1"
   }
 }
-
-output "clb_dns_name" {
-  value       = aws_elb.task1.dns_name
-  description = "The domain name of the task1 load balancer"
-}
-
-output spot_instance_private_ip {
-  value = module.worker.spot_instance_private_ip
-}
