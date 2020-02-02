@@ -28,6 +28,7 @@ jobs:
                      
     - name: build webapp2 image
       run: |
+          cd task3 && \
           docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA \
                      --file web2/Dockerfile \
                      ./web2/
