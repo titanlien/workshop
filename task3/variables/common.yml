@@ -1,4 +1,3 @@
 ---
-docker_hub_account: "titanlien"
-webapp_1_tag: v1
+DOCKER_REGISTRY: docker.pkg.github.com
 webapp_2_tag: v1

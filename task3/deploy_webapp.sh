@@ -1,21 +1,13 @@
 #!/bin/bash
 set -e
 
-export docker_hub_account=`cat variables/common.yml | yq .docker_hub_account -r`
-export webapp_1_tag=`cat variables/common.yml | yq .webapp_1_tag -r`
-export webapp_2_tag=`cat variables/common.yml | yq .webapp_2_tag -r`
-
-# prepare docker webapp1 image
-docker build -t $docker_hub_account/webapp1:$webapp_1_tag ./web1/
-docker push $docker_hub_account/webapp1:$webapp_1_tag
-
-# prepare docker webapp2 image
-docker build -t $docker_hub_account/webapp2:$webapp_2_tag ./web2/
-docker push $docker_hub_account/webapp2:$webapp_2_tag
+export webapp_tag=`git rev-parse --verify HEAD`
 
 # update Menifests 
-yasha -v variables/common.yml -o web_1.yml --keep-trailing-newline \
+yasha --webapp_tag=$webapp_tag -v variables/common.yml -o web_1.yml --keep-trailing-newline \
   templates/web_1.yml.j2
+exit 0
+
 yasha -v variables/common.yml -o web_2.yml --keep-trailing-newline \
   templates/web_2.yml.j2
 

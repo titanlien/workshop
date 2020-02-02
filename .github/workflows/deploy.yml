@@ -34,7 +34,7 @@ jobs:
                      ./web2/
                      
 
-    - name: Deploy
+    - name: Push
       run: |
           docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA &&\
           docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA
