@@ -1,0 +1,36 @@
+name: Build and Push docker image
+
+on: [push]
+env:
+  DOCKER_REGISTRY: docker.pkg.github.com
+
+jobs:
+  build:
+
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build webapp1 image
+      run: |
+          docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA \
+                     --file task3/web1/Dockerfile \
+                     .
+                     
+    - name: build webapp2 image
+      run: |
+          docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA \
+                     --file task3/web2/Dockerfile \
+                     .
+                     
+    - name: Docker login
+      run: |
+          docker login \
+            --username $GITHUB_ACTOR \
+            --password ${{secrets.GITHUB_TOKEN}} \
+            docker.pkg.github.com
+
+    - name: Deploy
+      run: |
+          docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA &&\
+          docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA
