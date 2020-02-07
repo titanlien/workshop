@@ -1,17 +1,25 @@
 name: Build and Push docker image
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - task3
+  pull_request:
+    branches:
+      - master
+  release:
+    types:
+      - created
 env:
   DOCKER_REGISTRY: docker.pkg.github.com
 
 jobs:
   build:
-
     runs-on: [self-hosted]
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Docker login
       run: |
           docker login \
@@ -21,14 +29,12 @@ jobs:
 
     - name: build webapp1 image
       run: |
-          cd task3 && \
           docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA \
                      --file web1/Dockerfile \
                      ./web1/
                      
     - name: build webapp2 image
       run: |
-          cd task3 && \
           docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA \
                      --file web2/Dockerfile \
                      ./web2/
