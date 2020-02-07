@@ -21,6 +21,4 @@ jobs:
       with:
         accessToken: ${{secrets.GITHUB_TOKEN}}
         context: ./task3/web1/
-        username: $GITHUB_ACTOR
-        imageName: web1
-        imageTag: $GITHUB_SHA
+        imageTagSuffix: web1
