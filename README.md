@@ -32,9 +32,10 @@
 ```
 when visited with a HTTP client
 * Dockerize the application
-* Put the application to Minikube Kubernetes
+* Put the application to kind's Kubernetes
 * Create a second application, that utilizes the first and displays reversed message text
-* Automate deployment of the 2 applications using a script
+* Deployment docker image with github workflow and login github registry with k8s secret config.
+* Update application with kubctl in script
 ---
 # Task 4
 # Python CLI
