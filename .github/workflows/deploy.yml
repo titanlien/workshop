@@ -4,43 +4,23 @@ on:
   push:
     branches:
       - master
-    paths:
-      - task3
   pull_request:
     branches:
       - master
   release:
     types:
       - created
-env:
-  DOCKER_REGISTRY: docker.pkg.github.com
 
 jobs:
   build:
     runs-on: [self-hosted]
     steps:
     - uses: actions/checkout@v2
-    - name: Docker login
-      run: |
-          docker login \
-            --username $GITHUB_ACTOR \
-            --password ${{secrets.GITHUB_TOKEN}} \
-            docker.pkg.github.com
-
-    - name: build webapp1 image
-      run: |
-          docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA \
-                     --file web1/Dockerfile \
-                     ./web1/
-                     
-    - name: build webapp2 image
-      run: |
-          docker build -t $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA \
-                     --file web2/Dockerfile \
-                     ./web2/
-                     
-
-    - name: Push
-      run: |
-          docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp1:$GITHUB_SHA &&\
-          docker push $DOCKER_REGISTRY/$GITHUB_REPOSITORY/webapp2:$GITHUB_SHA
+    - name: GitHub Docker Action
+      uses: matootie/github-docker@v2.2.1
+      with:
+        accessToken: ${{secrets.GITHUB_TOKEN}}
+        context: ./task3/web1/
+        username: $GITHUB_ACTOR
+        imageName: web1
+        imageTag: $GITHUB_SHA

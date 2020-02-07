@@ -57,4 +57,4 @@ curl http://localhost:8080/
 ```
 
 # Demo
-[[!demo](https://asciinema.org/a/rlPRM7LwE76U84jCVx6rUO57l.svg)](https://asciinema.org/a/rlPRM7LwE76U84jCVx6rUO57l)
+[![demo](https://asciinema.org/a/rlPRM7LwE76U84jCVx6rUO57l.svg)](https://asciinema.org/a/rlPRM7LwE76U84jCVx6rUO57l)
