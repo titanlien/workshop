@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: web-1
-  replicas: 3
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,9 +18,11 @@ spec:
       labels:
         app: web-1
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: webapp
-          image: {{ DOCKER_REGISTRY }}/titanlien/workshop/webapp1:{{webapp_tag}}
+          image: docker.pkg.github.com/titanlien/workshop/web1:master
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
