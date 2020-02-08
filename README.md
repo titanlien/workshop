@@ -22,7 +22,7 @@
 
 ---
 # Task 3
-# docker + kubectl: deployment + svc
+# github workflow + kustomize + kubectl: deployment + svc
 * Implement a piece of software exposing a JSON document:
 ```
 {
