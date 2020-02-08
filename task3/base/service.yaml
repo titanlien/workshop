@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: the-service
+  labels:
+    app: webapp
+spec:
+  selector:
+    app: webapp
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+    name: http
