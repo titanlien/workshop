@@ -5,3 +5,6 @@ task2/docker-compose.yml
 task2/nginx/nginx.conf
 task3/web_1.yml
 task3/web_2.yml
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
