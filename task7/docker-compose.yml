@@ -1,0 +1,36 @@
+---
+version: '3.7'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    networks:
+      - app
+    ports:
+      - 5000:5000
+    environment:
+      - ENVIRONMENT=prod
+      - LOG_LEVEL=info
+      - SERVE_PORT=5000
+    depends_on:
+      - mongo
+    command: uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "L1aJh39PP8E="
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app
+    ports:
+      - "27017:27017"
+networks:
+  app:
+
+volumes:
+  mongo_data:

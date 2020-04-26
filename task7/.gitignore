@@ -1,0 +1,7 @@
+# Unit test / coverage reports
+coverage.xml
+result.xml
+.coverage
+
+# vs coder
+.vscode/

@@ -1,0 +1,19 @@
+databases:
+  local:
+    NAME: 'app_db'
+    HOST: '127.0.0.1'
+    PORT: '27017'
+    USER: 'admin'
+    PASSWORD: 'L1aJh39PP8E='
+  test:
+    NAME: 'app_db'
+    HOST: 'mongo'
+    PORT: '27017'
+    USER: 'admin'
+    PASSWORD: 'L1aJh39PP8E='
+  prod:
+    NAME: 'admin'
+    HOST: 'local-mongodb.default.svc.cluster.local'
+    PORT: '27017'
+    USER: 'root'
+    PASSWORD: 'Ti39Q59QRC'

@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: webapp
+  labels:
+    name: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: webapp
+  template:
+    metadata:
+      labels:
+        name: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: docker.pkg.github.com/titanlien/titanlien-devops-test/webapp:dev
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        env:
+          - name: SERVE_PORT
+            value: "5000"
+          - name: ENVIRONMENT
+            value: "prod"
+      imagePullSecrets:
+      - name: regcred

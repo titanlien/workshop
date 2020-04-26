@@ -1,0 +1,10 @@
+---
+version: '3.7'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: docker/test/Dockerfile
+    environment:
+      - ENVIRONMENT=test
+    command: make test

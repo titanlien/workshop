@@ -51,3 +51,22 @@ Output: "XXXVI"
 # Task 5
 # Go tutorial on jupyter notebook
 [html preview](https://htmlpreview.github.io/?https://github.com/titanlien/workshop/blob/master/task5/go_tuturial.html)
+
+---
+# Task 6
+
+---
+# Task 7
+### setup backend api ot handle insert and query metadata
+
+* Technical scopes
+
+```
+github action
+docker-compose
+pytest
+fastapi
+minikube
+make
+helm to provision mongodb
+```
