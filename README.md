@@ -54,6 +54,18 @@ Output: "XXXVI"
 
 ---
 # Task 6
+## 6.1 Creare a ruby script
+### It shows top 10 process in swap and sorts output by KB. It will ignore Zero values
+
+
+## 6.2 Create a bach script
+
+```
+performs occasional test queries to the hostname "google.com" to each of the DNS servers configured in /etc/resolv.conf
+```
+
+## 6.3 Fix a client certificateds issue in nginx configure.
+
 
 ---
 # Task 7

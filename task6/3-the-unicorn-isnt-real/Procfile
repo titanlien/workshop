@@ -1,0 +1,2 @@
+nginx: nginx -p $(pwd) -c nginx/nginx.conf
+unicorn: unicorn -c unicorn.conf
