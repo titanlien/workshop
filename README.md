@@ -57,7 +57,7 @@ Output: "XXXVI"
 
 ---
 # Task 7
-### setup backend api ot handle insert and query metadata
+### setup backend api to handle POST/PUT/PATCH and query value metadata by filtering metadata key
 
 * Technical scopes
 
@@ -68,5 +68,5 @@ pytest
 fastapi
 minikube
 make
-helm to provision mongodb
+Using helm to provision mongodb
 ```
