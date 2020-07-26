@@ -16,13 +16,15 @@ docker-build:
   # Official docker image.
   image: docker:latest
   stage: build
+  variables:
+    IMAGE_TAG: "$CI_REGISTRY:$CI_REGISTRY_USER:web1:$CI_COMMIT_REF_SLUG"
   services:
     - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" ./task3/web1/
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker build --pull -t "$IMAGE_TAG" ./task3/web1/
+    - docker push "$IMAGE_TAG"
   except:
     - master
 
