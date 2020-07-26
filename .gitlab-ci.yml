@@ -23,8 +23,6 @@ docker-build:
   services:
     - docker:dind
   before_script:
-    - export
-    - env
     - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY
   script:
     - docker build --pull -t $CONTAINER_TEST_IMAGE ./task3/web1/
