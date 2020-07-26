@@ -23,8 +23,8 @@ docker-build:
   services:
     - docker:dind
   before_script:
-    - echo $CONTAINER_TEST_IMAGE
-    - echo "$CONTAINER_TEST_IMAGE"
+    - export
+    - env
     - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY
   script:
     - docker build --pull -t $CONTAINER_TEST_IMAGE ./task3/web1/
@@ -32,7 +32,7 @@ docker-build:
   except:
     - master
 
-test1:
+test:
   stage: test
   script:
     - echo "Do a test here"
@@ -46,7 +46,7 @@ release-image:
   only:
     - master
 
-deploy1:
+deploy:
   stage: deploy
   script:
     - echo "Do your deploy here"
