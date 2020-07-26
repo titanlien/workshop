@@ -2,6 +2,7 @@
 stages:
   - build
   - test
+  - release
   - deploy
 
 image: busybox:latest
@@ -17,14 +18,13 @@ docker-build:
   image: docker:latest
   stage: build
   variables:
-    IMAGE_TAG: "$CI_REGISTRY:$CI_REGISTRY_USER:web1:$CI_COMMIT_REF_SLUG"
+    IMAGE_TAG: $CI_REGISTRY/$CI_REGISTRY_USER/web1:$CI_COMMIT_REF_SLUG
   services:
     - docker:dind
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build --pull -t "$IMAGE_TAG" ./task3/web1/
-    - docker push "$IMAGE_TAG"
+    - docker build --pull -t $IMAGE_TAG ./task3/web1/
   except:
     - master
 
@@ -33,7 +33,18 @@ test1:
   script:
     - echo "Do a test here"
 
+release-image:
+  stage: release
+  script:
+    - docker pull $CONTAINER_TEST_IMAGE
+    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+    - docker push $CONTAINER_RELEASE_IMAGE
+  only:
+    - master
+
 deploy1:
   stage: deploy
   script:
     - echo "Do your deploy here"
+  only:
+    - master
