@@ -18,13 +18,17 @@ docker-build:
   image: docker:latest
   stage: build
   variables:
-    IMAGE_TAG: $CI_REGISTRY/$CI_REGISTRY_USER/web1:$CI_COMMIT_REF_SLUG
+    CONTAINER_TEST_IMAGE: $CI_REGISTRY/$CI_REGISTRY_USER/web:$CI_COMMIT_REF_SLUG
+    CONTAINER_RELEASE_IMAGE: $CI_REGISTRY/$CI_REGISTRY_USER/web:lastest
   services:
     - docker:dind
   before_script:
+    - echo $CONTAINER_TEST_IMAGE
+    - echo "$CONTAINER_TEST_IMAGE"
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build --pull -t $IMAGE_TAG ./task3/web1/
+    - docker build --pull -t $CONTAINER_TEST_IMAGE ./task3/web1/
+    - docker push $CONTAINER_TEST_IMAGE
   except:
     - master
 
