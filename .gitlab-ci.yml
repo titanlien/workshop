@@ -1,35 +1,52 @@
-# see https://docs.gitlab.com/ce/ci/yaml/README.html for all available options
-
 # you can delete this line if you're not using Docker
+stages:
+  - build
+  - test
+  - release
+  - deploy
+
 image: busybox:latest
 
 before_script:
   - echo "Before script section"
-  - echo "For example you might run an update here or install a build dependency"
-  - echo "Or perhaps you might print out some debugging details"
 
 after_script:
   - echo "After script section"
-  - echo "For example you might do some cleanup here"
 
-build1:
+docker-build:
+  # Official docker image.
+  image: docker:latest
   stage: build
+  variables:
+    CONTAINER_TEST_IMAGE: $DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/web:$CI_COMMIT_REF_SLUG
+    CONTAINER_RELEASE_IMAGE: $DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/web:lastest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASSWORD $DOCKER_REGISTRY
   script:
-    - echo "Do your build here"
+    - docker build --pull -t $CONTAINER_TEST_IMAGE ./task3/web1/
+    - docker push $CONTAINER_TEST_IMAGE
+  except:
+    - master
 
-test1:
+test:
   stage: test
   script:
     - echo "Do a test here"
-    - echo "For example run a test suite"
 
-test2:
-  stage: test
+release-image:
+  stage: release
   script:
-    - echo "Do another parallel test here"
-    - echo "For example run a lint test"
+    - docker pull $CONTAINER_TEST_IMAGE
+    - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+    - docker push $CONTAINER_RELEASE_IMAGE
+  only:
+    - master
 
-deploy1:
+deploy:
   stage: deploy
   script:
     - echo "Do your deploy here"
+  only:
+    - master
