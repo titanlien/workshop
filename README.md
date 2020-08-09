@@ -82,3 +82,12 @@ minikube
 make
 Using helm to provision mongodb
 ```
+
+---
+# Task 8
+### Istio 1.7 on minikube
+
+---
+# Task 9
+### CI/CD within helm bluegreen deploy and release tag on gitlab  pipelines
+[Gitlab pipeline](https://gitlab.com/maohsiang_lien/blue-green)
