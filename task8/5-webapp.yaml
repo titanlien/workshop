@@ -37,6 +37,7 @@ spec:
     metadata:
       labels:
         app: demo
+        version: prod
     spec:
       serviceAccountName: canary
       securityContext:
@@ -77,6 +78,7 @@ spec:
     metadata:
       labels:
         app: demo
+        version: dev
     spec:
       serviceAccountName: canary
       securityContext:
