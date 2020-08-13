@@ -10,11 +10,11 @@
 ---
 # Task 2
 ## Nginx + docker-compose + python
-* creates a new Docker container running nginx and proxies all requests on /<container_name> to the appropriate container and port 
+* creates a new Docker container running nginx and proxies all requests on /<container_name> to the appropriate container and port
 	* there is only one nginx container running at all times
 	* if the nginx container is down, it needs to be started
 	* when a new application container is created the nginx configuration is updated to proxy requests to the new container
-* creates a new Docker container running Java and deploys demo-0.0.1-SNAPTSHOT.jar from the previous step 
+* creates a new Docker container running Java and deploys demo-0.0.1-SNAPTSHOT.jar from the previous step
 	* the Docker container publishes container 8080 on a free port between 8000 and 8200
 	* the container name is a unique identifier
 	* container is only created if it does not exist
@@ -27,7 +27,7 @@
 ```
 {
 "id": "1",
-"message": "Hello world" 
+"message": "Hello world"
 }
 ```
 when visited with a HTTP client

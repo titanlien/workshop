@@ -14,7 +14,7 @@ services:
     - webapp-{{n}}
     {% endfor %}
     restart: always
-  
+
   {% for n in count %}
   webapp-{{n}}:
     image: webapp
