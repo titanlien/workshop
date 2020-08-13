@@ -85,7 +85,7 @@ Using helm to provision mongodb
 
 ---
 # Task 8
-### Istio 1.6.7 on minikube
+### Istio 1.6.7 canary deploy on minikube
 
 ---
 # Task 9
