@@ -10,11 +10,11 @@ spec:
     - route:
         - destination:
             host: canary.default.svc.cluster.local
-            subset: prod
+            subset: prod-dr
           weight: 90
         - destination:
             host: canary.default.svc.cluster.local
-            subset: dev
+            subset: dev-dr
           weight: 10
 ---
 kind: DestinationRule
@@ -23,11 +23,11 @@ metadata:
   name: canary-dr
   namespace: default
 spec:
-  host: canary
+  host: canary.default.svc.cluster.local
   subsets:
     - labels:
         version: prod
-      name: prod
+      name: prod-dr
     - labels:
         version: dev
-      name: dev
+      name: dev-dr
