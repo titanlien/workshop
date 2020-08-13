@@ -14720,8 +14720,8 @@ metadata:
     release: istio
 type: Opaque
 data:
-  username: YWRtaW4=   # admin
-  passphrase: YWRtaW4= # admin
+  username: dGl0YW4=
+  passphrase: cGFzc3dvcmQ=
 ---
 
 
