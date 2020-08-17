@@ -1,11 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: canary-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - demo.local
+
+---
+
 kind: VirtualService
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 metadata:
   name: canary-vs
   namespace: default
 spec:
   hosts:
-    - canary.default.svc.cluster.local
+    - demo.local
+  gateways:
+    - canary-gateway
   http:
     - route:
         - destination:
@@ -18,12 +37,15 @@ spec:
           weight: 10
 ---
 kind: DestinationRule
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 metadata:
   name: canary-dr
   namespace: default
 spec:
   host: canary.default.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
   subsets:
     - labels:
         version: prod
