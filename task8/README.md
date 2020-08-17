@@ -31,4 +31,4 @@ while curl http://$INGRESS_HOST:$INGRESS_PORT/ -HHost:demo.local; sleep 0.5; end
 ![prod:dev=1:1](images/1-1.png)
 
 
-[Record]()
+[Record](https://asciinema.org/a/qVQVhiBr66To4uyShZe20IuCq)
