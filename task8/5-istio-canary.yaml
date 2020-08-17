@@ -24,6 +24,9 @@ metadata:
   namespace: default
 spec:
   host: canary.default.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
   subsets:
     - labels:
         version: prod
