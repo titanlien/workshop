@@ -103,20 +103,3 @@ spec:
               port: http
           resources:
             {}
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: canary
-  labels:
-    app.kubernetes.io/version: "1.16.0"
-    app: demo
-spec:
-  rules:
-    - host: "demo.local"
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: canary
-              servicePort: 8080

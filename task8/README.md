@@ -1,20 +1,14 @@
 # Canary deploy with istio and minikube
 ---
 
-### This task is run `kubectl apply` by serial number order.
+### This task is excuting `kubectl apply` the manifest files by serial number order.
 ```bash
 kubectl apply -f 1-istio-init.yaml
 kubectl apply -f 2-istio-minikube.yaml
 ...
 ```
 
-### Since this demo is based on minikube, we have to switch ingress gateway from LoadBalancer to NodePort by following command
-```bash
-kubectl edit svc istio-ingressgateway -n istio-system
-```
-
-
-### expose nodePort of ingress gateway and minikube ip
+### export nodePort of ingress gateway and minikube ip
 ```bash
 export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 export INGRESS_HOST=$(minikube ip)
