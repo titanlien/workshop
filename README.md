@@ -91,3 +91,7 @@ Using helm to provision mongodb
 # Task 9
 ### CI/CD within helm bluegreen deploy and release tag on gitlab  pipelines
 [Gitlab pipeline](https://gitlab.com/maohsiang_lien/blue-green)
+
+---
+# Task 10
+### build up a API to return GET request, and create a docker image on minikube, then create manifests to bring up the service and deployment.
