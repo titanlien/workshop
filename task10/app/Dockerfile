@@ -18,7 +18,7 @@ RUN python -m pytest test_main.py
 
 FROM base as release
 
-COPY Pipfile Pipfile.lock main.py ./
+COPY main.py ./
 
 EXPOSE 5000
 
