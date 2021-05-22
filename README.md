@@ -95,3 +95,15 @@ Using helm to provision mongodb
 ---
 # Task 10
 ### build up a API to return GET request, and create a docker image on minikube, then create manifests to bring up the service and deployment.
+
+---
+# Task 11
+
+### This program is going to be provided ​json​ lines as input in the ​stdin​, and should provide a ​json​ line output for each one — imagine this as a stream of events arriving at the authorizer.
+```
+$ cat operations
+{"account": {"active-card": true, "available-limit": 100}} {"transaction": {"merchant": "Burger King", "amount": 20, "time": "2019-02-13T10:00:00.000Z"}}
+{"transaction": {"merchant": "Habbib's", "amount": 90, "time": "2019-02-13T11:00:00.000Z"}}
+$ authorize < operations
+{"account": {"active-card": true, "available-limit": 100}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": ["insufficient-limit"]}
+```
