@@ -1,0 +1,8 @@
+{"transaction": {"merchant": "Burger King", "amount": 20, "time": "2019-02-13T10:00:00.000Z"}}
+{"account": {"active-card": true, "available-limit": 120}}
+{"transaction": {"merchant": "Burger King", "amount": 20, "time": "2019-02-13T10:00:00.000Z"}}
+{"transaction": {"merchant": "Burger King", "amount": 20, "time": "2019-02-13T10:00:10.000Z"}}
+{"transaction": {"merchant": "Starbucks", "amount": 20, "time": "2019-02-13T10:00:20.000Z"}}
+{"transaction": {"merchant": "Pizza hot", "amount": 20, "time": "2019-02-13T10:00:20.000Z"}}
+{"transaction": {"merchant": "KFC", "amount": 90, "time": "2019-02-13T10:00:30.000Z"}}
+{"transaction": {"merchant": "Habbib's", "amount": 20, "time": "2019-02-13T11:00:00.000Z"}}
