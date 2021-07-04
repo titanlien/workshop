@@ -27,6 +27,15 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/{short_code}/stats")
+async def get_url_status(short_code : str, db: Session = Depends(get_db)):
+    # Query the database for the document that matches the short_code from the path param
+    db_url = crud.get_url_by_short_code(db, short_code=short_code)
+    # 404 ERROR if no url is found
+    if not db_url:
+        raise HTTPException(status_code= 404, detail = "URL not found !")
+    else:
+        return db_url.__dict__
 
 @app.get("/{short_code}")
 async def redirect_url(short_code : str, db: Session = Depends(get_db)):
