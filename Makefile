@@ -25,3 +25,11 @@ test-deps:
 .PHONY: test
 test: clean
 	python3 -m pytest $(PYTEST_SETTINGS) tests/
+
+.PHONY: compose-down
+compose-down:
+	docker-compose down || true
+
+.PHONY: compose-up
+compose-up: compose-down
+	docker-compose up --build -d
