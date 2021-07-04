@@ -1,1 +1,5 @@
 sql_app.db
+test.db
+.coverage
+coverage.xml
+result.xml
