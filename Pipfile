@@ -9,6 +9,7 @@ uvicorn = "*"
 fastapi = "*"
 sqlalchemy = "*"
 pydantic = "*"
+validators = "*"
 
 [dev-packages]
 black = "*"
