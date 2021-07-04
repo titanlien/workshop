@@ -9,6 +9,7 @@ from . import models, schemas
 
 logger = logging.getLogger(__name__)
 
+
 def get_url_by_id(db: Session, url_id: int):
 
     return db.query(models.Url).filter(models.Url.id == url_id).first()
@@ -31,8 +32,9 @@ def get_url_by_long_url(db: Session, long_url: str):
         logger.info(f"err: {err}")
     return None
 
+
 def create_url(db: Session, long_url: str):
-    short_code = shortuuid.ShortUUID().random(length = 8)
+    short_code = shortuuid.ShortUUID().random(length=8)
     db_url = models.Url(long_url=long_url, short_code=short_code)
     db.add(db_url)
     db.commit()
