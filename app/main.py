@@ -39,7 +39,7 @@ async def get_url_status(short_code: str, db: Session = Depends(get_db)):
         return db_url.__dict__
 
 
-@app.get("/{short_code}")
+@app.get("/{short_code}/")
 async def redirect_url(short_code: str, db: Session = Depends(get_db)):
     # Query the database for the document that matches the short_code from the path param
     db_url = crud.get_url_by_short_code(db, short_code=short_code)
@@ -60,7 +60,7 @@ async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
     db_long_url = crud.get_url_by_long_url(db, long_url=url.long_url)
     if db_long_url:
         raise HTTPException(status_code=400, detail="URL already created")
-    ret = crud.create_url(db=db, long_url=url.long_url)
+    ret = crud.create_url(db=db, url=url)
     if ret is None:
         raise HTTPException(status_code=400, detail="URL can't be created")
     return {"url": os.path.join(config("BASE_URL"), ret.short_code)}
