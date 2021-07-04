@@ -7,8 +7,11 @@ name = "pypi"
 short-url = "*"
 uvicorn = "*"
 fastapi = "*"
+sqlalchemy = "*"
+pydantic = "*"
 
 [dev-packages]
+black = "*"
 
 [requires]
 python_version = "3.9"
