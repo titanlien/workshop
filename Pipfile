@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-short-url = "*"
 uvicorn = "*"
 fastapi = "*"
 sqlalchemy = "*"
@@ -16,6 +15,10 @@ starlette = "*"
 
 [dev-packages]
 black = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+
 
 [requires]
 python_version = "3.9"
