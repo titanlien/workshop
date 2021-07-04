@@ -19,7 +19,7 @@ def get_url_by_long_url(db: Session, long_url: str):
     try:
         return db.query(models.Url).filter(models.Url.long_url == long_url).first()
     except NoResultFound as err:
-        logger.info(f"err: {err}")
+        logger.error(f"{err}")
     return None
 
 

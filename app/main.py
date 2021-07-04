@@ -13,7 +13,6 @@ from .database import SessionLocal, engine
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").upper()
 logging.basicConfig(level=LOG_LEVEL)
-logger = logging.getLogger(__name__)
 
 models.Base.metadata.create_all(bind=engine)
 
