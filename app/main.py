@@ -13,6 +13,8 @@ LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").upper()
 logging.basicConfig(level=LOG_LEVEL)
 logger = logging.getLogger(__name__)
 
+models.Base.metadata.create_all(bind=engine)
+
 app = FastAPI()
 
 # Dependency
@@ -31,9 +33,11 @@ def get_db():
 
 
 @app.post("/add_url/", response_model=dict)
-async def create_url(long_url: UrlSchema, db: Session = Depends(get_db)):
-    logger.debug(f"long_url: {long_url}")
-    db_long_url = crud.get_url_by_long_url(db, long_url=long_url)
+async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
+    db_long_url = crud.get_url_by_long_url(db, long_url=url.long_url)
     if db_long_url:
         raise HTTPException(status_code=400, detail="URL already created")
-    return crud.create_url(db=db, long_url=long_url)
+    ret = crud.create_url(db=db, long_url=url.long_url)
+    if ret is None:
+        raise HTTPException(status_code=400, detail="URL can't be created")
+    return {"status": "added"}

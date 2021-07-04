@@ -1,9 +1,13 @@
 #import short_url as shurl
 
+import logging
+
 from sqlalchemy.orm import Session
+from sqlalchemy.orm.exc import NoResultFound
 
 from . import models, schemas
 
+logger = logging.getLogger(__name__)
 
 def get_url_by_id(db: Session, url_id: int):
 
@@ -21,9 +25,11 @@ def get_url_by_short_url(db: Session, short_url: str):
 
 
 def get_url_by_long_url(db: Session, long_url: str):
-
-    return db.query(models.Url).filter(models.Url.long_url == long_url).first()
-
+    try:
+        return db.query(models.Url).filter(models.Url.long_url == long_url).first()
+    except NoResultFound as err:
+        logger.info(f"err: {err}")
+    return None
 
 def create_url(db: Session, long_url: str):
     #short_url = shurl.encode_url(long_url)
