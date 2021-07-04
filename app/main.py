@@ -27,11 +27,20 @@ def get_db():
         db.close()
 
 
-# @app.get("/users/", response_model=List[schemas.User])
-# def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-#    users = crud.get_users(db, skip=skip, limit=limit)
-#    return users
-
+@app.get("/{short_code}")
+async def redirect_url(short_code : str, db: Session = Depends(get_db)):
+    # Query the database for the document that matches the short_code from the path param
+    db_url = crud.get_url_by_short_code(db, short_code=short_code)
+    # 404 ERROR if no url is found
+    if not db_url:
+        raise HTTPException(status_code= 404, detail = "URL not found !")
+    else:
+        # Increment visitor count by 1
+        db_url.visit_counter += 1
+        db.commit()
+        # Redirect to the longUrl
+        #response = RedirectResponse(url = url["longUrl"])
+        #return response
 
 @app.post("/add_url/", response_model=dict, status_code=201)
 async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
