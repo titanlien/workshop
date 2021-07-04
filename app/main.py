@@ -3,6 +3,7 @@ import os, logging
 from typing import List
 from sqlalchemy.orm import Session
 from fastapi import Body, FastAPI, HTTPException, Query, Depends
+from decouple import config
 
 import logging
 from . import crud, models
@@ -40,4 +41,4 @@ async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
     ret = crud.create_url(db=db, long_url=url.long_url)
     if ret is None:
         raise HTTPException(status_code=400, detail="URL can't be created")
-    return {"url": ret.short_url}
+    return {"url": os.path.join(config("BASE_URL"), ret.short_code)}

@@ -3,7 +3,7 @@ import shortuuid
 
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import NoResultFound
-from decouple import config
+
 
 from . import models, schemas
 
@@ -19,9 +19,9 @@ def get_urls(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Url).offset(skip).limit(limit).all()
 
 
-def get_url_by_short_url(db: Session, short_url: str):
+def get_url_by_short_code(db: Session, short_code: str):
 
-    return db.query(models.Url).filter(models.Url.short_url == short_url).first()
+    return db.query(models.Url).filter(models.Url.short_code == short_code).first()
 
 
 def get_url_by_long_url(db: Session, long_url: str):
@@ -32,9 +32,8 @@ def get_url_by_long_url(db: Session, long_url: str):
     return None
 
 def create_url(db: Session, long_url: str):
-    shortCode = shortuuid.ShortUUID().random(length = 8)
-    short_url = os.path.join(config("BASE_URL"), shortCode)
-    db_url = models.Url(long_url=long_url, short_url=short_url)
+    short_code = shortuuid.ShortUUID().random(length = 8)
+    db_url = models.Url(long_url=long_url, short_code=short_code)
     db.add(db_url)
     db.commit()
     db.refresh(db_url)

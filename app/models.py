@@ -12,6 +12,6 @@ class Url(Base):
     id = Column(Integer, primary_key=True, index=True)
     create_date = Column(DateTime(timezone=True), unique=True, index=False, server_default=func.now())
     long_url = Column(String, unique=True, index=True)
-    short_url = Column(String, unique=True, index=True)
+    short_code = Column(String, unique=True, index=True)
     last_access_date = Column(DateTime(timezone=True), unique=True, index=False, onupdate=func.now())
     visit_counter = Column(Integer, default=0)
