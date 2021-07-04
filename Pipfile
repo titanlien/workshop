@@ -12,6 +12,7 @@ pydantic = "*"
 validators = "*"
 shortuuid = "*"
 python-decouple = "*"
+starlette = "*"
 
 [dev-packages]
 black = "*"

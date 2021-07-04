@@ -4,6 +4,7 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import Body, FastAPI, HTTPException, Query, Depends
 from decouple import config
+from starlette.responses import RedirectResponse
 
 import logging
 from . import crud, models
@@ -38,9 +39,9 @@ async def redirect_url(short_code : str, db: Session = Depends(get_db)):
         # Increment visitor count by 1
         db_url.visit_counter += 1
         db.commit()
-        # Redirect to the longUrl
-        #response = RedirectResponse(url = url["longUrl"])
-        #return response
+        # Redirect to the long_url
+        response = RedirectResponse(db_url.long_url)
+        return response
 
 @app.post("/add_url/", response_model=dict, status_code=201)
 async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
