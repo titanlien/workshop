@@ -32,7 +32,7 @@ def get_db():
 #    return users
 
 
-@app.post("/add_url/", response_model=dict)
+@app.post("/add_url/", response_model=dict, status_code=201)
 async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
     db_long_url = crud.get_url_by_long_url(db, long_url=url.long_url)
     if db_long_url:
@@ -40,4 +40,4 @@ async def create_url(url: UrlSchema, db: Session = Depends(get_db)):
     ret = crud.create_url(db=db, long_url=url.long_url)
     if ret is None:
         raise HTTPException(status_code=400, detail="URL can't be created")
-    return {"status": "added"}
+    return {"url": ret.short_url}

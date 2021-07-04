@@ -1,9 +1,9 @@
-#import short_url as shurl
-
-import logging
+import logging, os
+import shortuuid
 
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import NoResultFound
+from decouple import config
 
 from . import models, schemas
 
@@ -32,8 +32,9 @@ def get_url_by_long_url(db: Session, long_url: str):
     return None
 
 def create_url(db: Session, long_url: str):
-    #short_url = shurl.encode_url(long_url)
-    db_url = models.Url(long_url=long_url, short_url=long_url)
+    shortCode = shortuuid.ShortUUID().random(length = 8)
+    short_url = os.path.join(config("BASE_URL"), shortCode)
+    db_url = models.Url(long_url=long_url, short_url=short_url)
     db.add(db_url)
     db.commit()
     db.refresh(db_url)

@@ -10,6 +10,8 @@ fastapi = "*"
 sqlalchemy = "*"
 pydantic = "*"
 validators = "*"
+shortuuid = "*"
+python-decouple = "*"
 
 [dev-packages]
 black = "*"
