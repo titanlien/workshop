@@ -12,11 +12,15 @@ clean-pyc:
 
 .PHONY: clean
 clean: clean-pyc
-	rm -f ${TEST_RESULT_XML_PATH} ${COVERAGE_XML_PATH} .coverage test.db
+	rm -f ${TEST_RESULT_XML_PATH} ${COVERAGE_XML_PATH} .coverage test.db sql_app.db
 
 .PHONY: install
 install:
 	pipenv install
+
+.PHONY: run
+run:
+	uvicorn app.main:app --reload --port 5000 --host 0.0.0.0 --debug
 
 .PHONY: test-deps
 test-deps:

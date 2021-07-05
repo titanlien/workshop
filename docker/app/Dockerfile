@@ -2,9 +2,8 @@ FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
 
 # for gunicorn in /start.sh
 ENV PORT 5000
-# for application level
-ENV SERVE_PORT 5000
-
+ENV BASE_URL http://localhost:5000/
+ENV LOG_LEVEL WARNING
 ENV WEB_CONCURRENCY 4
 
 # Needed for proper functioning in Docker
@@ -17,4 +16,4 @@ COPY Pipfile Pipfile.lock ./
 
 RUN pipenv install --system --deploy
 
-COPY app/* /app/app/
+COPY app/*.py /app/app/
