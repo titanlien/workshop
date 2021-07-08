@@ -35,6 +35,17 @@ def create_url(db: Session, url: schemas.UrlSchema):
     db.refresh(db_url)
     return db_url
 
+
 def constrcut_url_history(db: Session, url_id: int):
 
     return db.add(models.short_url_history(url_id=url_id))
+
+
+def get_short_history_by_short_code(db: Session, short_code: str):
+    history = (
+        db.query(models.short_url_history)
+        .join(models.Url, models.short_url_history.url_id == models.Url.id)
+        .filter(models.Url.short_code == short_code)
+        .all()
+    )
+    return [access_date.access_date for access_date in history]

@@ -1,8 +1,7 @@
 import os, logging
 
-from typing import List
 from sqlalchemy.orm import Session
-from fastapi import Body, FastAPI, HTTPException, Query, Depends
+from fastapi import FastAPI, HTTPException, Depends
 from decouple import config
 from starlette.responses import RedirectResponse
 
@@ -25,6 +24,17 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+@app.get("/{short_code}/graph")
+async def get_short_url_hostory(short_code: str, db: Session = Depends(get_db)):
+    # Query the database for the document that matches the short_code from the path param
+    db_url_history = crud.get_short_history_by_short_code(db, short_code=short_code)
+    # 404 ERROR if no url is found
+    if not db_url_history:
+        raise HTTPException(status_code=404, detail="URL not found !")
+    else:
+        return db_url_history
 
 
 @app.get("/{short_code}/stats")

@@ -24,9 +24,10 @@ class Url(Base):
 
     history = relationship("short_url_history", back_populates="url")
 
+
 class short_url_history(Base):
     __tablename__ = "short_url_history"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     url_id = Column(Integer, ForeignKey(Url.id))
     access_date = Column(
