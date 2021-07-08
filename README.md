@@ -64,8 +64,12 @@ make compose-up
 ## [live demo](https://asciinema.org/a/Ynh9MwBC2fXHoktMx0PouvmQc)
 
 ## TODO:
-```dotnetcli
+```
 1. Create a DB(postgresql) in docker-compose
-2. Create a table to store the short link visit time
-3. Create an endpoint with graph module
+2. Create an endpoint with graph module
+```
+
+## Limitation
+```
+1. Dut to datetime type, only handle the REST in a second, not less than a second. 
 ```

@@ -34,3 +34,7 @@ def create_url(db: Session, url: schemas.UrlSchema):
     db.commit()
     db.refresh(db_url)
     return db_url
+
+def constrcut_url_history(db: Session, url_id: int):
+
+    return db.add(models.short_url_history(url_id=url_id))

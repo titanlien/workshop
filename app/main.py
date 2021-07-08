@@ -48,6 +48,7 @@ async def redirect_url(short_code: str, db: Session = Depends(get_db)):
     else:
         # Increment visitor count by 1
         db_url.visit_counter += 1
+        crud.constrcut_url_history(db, url_id=db_url.id)
         db.commit()
         # Redirect to the long_url
         response = RedirectResponse(db_url.long_url)
