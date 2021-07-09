@@ -107,3 +107,7 @@ $ cat operations
 $ authorize < operations
 {"account": {"active-card": true, "available-limit": 100}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": ["insufficient-limit"]}
 ```
+
+---
+# [Task 13](task13)
+### Use FastAPI and sqlalchemy to create shortened URL similar to https://goo.gl/
