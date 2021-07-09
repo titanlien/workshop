@@ -1,0 +1,21 @@
+---
+version: '3.9'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    networks:
+      - app
+    ports:
+      - 5000:5000
+    environment:
+      - LOG_LEVEL=info
+      - SERVE_PORT=5000
+    command: uvicorn app.main:app --reload --port 5000 --host 0.0.0.0
+
+networks:
+  app:
+
+volumes:
+  db_data:
