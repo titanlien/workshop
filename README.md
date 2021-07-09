@@ -45,6 +45,14 @@ curl -XGET http://localhost:5000/F487Z6cY/stats | jq
   "long_url": "https://facebook.com",
   "last_access_date": null
 }
+
+curl -X GET http://localhost:5000/orVPMA6b/graph|jq
+
+[
+  "2021-07-08T21:46:10",
+  "2021-07-08T21:46:11",
+  "2021-07-08T21:46:12"
+]
 ```
 
 ## Run pytest
@@ -54,6 +62,36 @@ make test-deps
 
 # run test
 make test
+find . -name '*.pyc' -delete
+rm -f result.xml coverage.xml .coverage test.db sql_app.db
+python3 -m pytest -vv --junitxml=result.xml --cov-report term-missing --cov-report xml:coverage.xml --cov=app tests/
+=========================================================================================== test session starts ============================================================================================
+platform darwin -- Python 3.9.6, pytest-6.2.4, py-1.10.0, pluggy-1.0.0.dev0 -- /Users/titan/.local/share/virtualenvs/short_url-2EiMVsOE/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/titan/Documents/Interview/metro.digital/short_url, configfile: pytest.ini
+plugins: cov-2.12.1, mock-3.6.1
+collected 4 items
+
+tests/test_main.py::test_error_url PASSED                                                                                                                                                            [ 25%]
+tests/test_main.py::test_correct_url PASSED                                                                                                                                                          [ 50%]
+tests/test_main.py::test_get_stats PASSED                                                                                                                                                            [ 75%]
+tests/test_main.py::test_get_graph PASSED                                                                                                                                                            [100%]
+
+--------------------------------------------------------- generated xml file: /Users/titan/Documents/Interview/metro.digital/short_url/result.xml ----------------------------------------------------------
+
+---------- coverage: platform darwin, python 3.9.6-final-0 -----------
+Name              Stmts   Miss  Cover   Missing
+-----------------------------------------------
+app/crud.py          29      4    86%   21-23, 31
+app/database.py       7      0   100%
+app/main.py          49      5    90%   22-26, 75
+app/models.py        21      0   100%
+app/schemas.py       12      0   100%
+-----------------------------------------------
+TOTAL               118      9    92%
+Coverage XML written to file coverage.xml
+
+============================================================================================ 4 passed in 0.79s =============================================================================================
 ```
 
 ## Run with docker-compose
@@ -61,12 +99,12 @@ make test
 make compose-up
 ```
 
-## [live demo](https://asciinema.org/a/Ynh9MwBC2fXHoktMx0PouvmQc)
+# [Live demo](https://asciinema.org/a/Ynh9MwBC2fXHoktMx0PouvmQc)
 
 ## TODO:
 ```
 1. Create a DB(postgresql) in docker-compose
-2. Create an endpoint with graph module
+2. Update graph endpoint with graph module
 ```
 
 ## Limitation
