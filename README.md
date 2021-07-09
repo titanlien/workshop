@@ -107,3 +107,7 @@ $ cat operations
 $ authorize < operations
 {"account": {"active-card": true, "available-limit": 100}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": []} {"account": {"active-card": true, "available-limit": 80}, "violations": ["insufficient-limit"]}
 ```
+
+---
+# [Task 12](task12)
+### Provision kubeflow on minikube
