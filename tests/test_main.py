@@ -84,6 +84,8 @@ def test_correct_url():
 def test_get_stats():
     response = client.get("/not!here/")
     assert 404 == response.status_code
+    response = client.get("/not!here/stats")
+    assert 404 == response.status_code
 
     response = client.get("/pytest/stats")
     assert 200 == response.status_code
@@ -92,3 +94,11 @@ def test_get_stats():
     response = client.get("/pytest/")
     response = client.get("/pytest/stats")
     assert 1 == response.json()["visit_counter"]
+
+def test_get_graph():
+    response = client.get("/not!here/graph")
+    assert 404 == response.status_code
+    
+    response = client.get("/pytest/graph")
+    assert 200 == response.status_code
+    assert 1 == len(response.json())
