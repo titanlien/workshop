@@ -1,5 +1,5 @@
 # workshop
-# [Task 1](task1)
+# [Task 1](task01)
 ## Terraform + AWS + Ansible
 * create a new VPC with CIDR 172.16.0.0
 * create two new subnets with CIDR 172.16.1.0/24 and 172.16.2.0/24 in two different availability zones
@@ -8,7 +8,7 @@
 * create a load balancer for the Java application on port 80
 * setup route53 to host CNAME record of elb url
 ---
-# [Task 2](task2)
+# [Task 2](task02)
 ## Nginx + docker-compose + python
 * creates a new Docker container running nginx and proxies all requests on /<container_name> to the appropriate container and port
 	* there is only one nginx container running at all times
@@ -21,7 +21,7 @@
 	* there can be multiple Docker containers with different names running at the same time
 
 ---
-# [Task 3](task3)
+# [Task 3](task03)
 # github workflow + kustomize + kubectl: deployment + svc
 * Implement a piece of software exposing a JSON document:
 ```
@@ -37,7 +37,7 @@ when visited with a HTTP client
 * Deployment docker image with github workflow and login github registry with k8s secret config.
 * Update application with kubctl in script
 ---
-# [Task 4](task4)
+# [Task 4](task04)
 # Python CLI
 * Please consider the work you submit here a small, but production-ready deliverable, in the sense that you are happy to ship such code, tests and documentation.
 * Write a Roman numeral converter that converts integer numbers into Roman numerals:
@@ -48,7 +48,7 @@ func(36)
 Output: "XXXVI"
 ```
 ---
-# [Task 5](task5)
+# [Task 5](task05)
 # Go tutorial on jupyter notebook
 ## Create html from ipynb
 ```bash
@@ -57,7 +57,7 @@ jupyter nbconvert --execute task5/go_tuturial.ipynb --to html
 [html preview](https://htmlpreview.github.io/?https://github.com/titanlien/workshop/blob/master/task5/go_tuturial.html)
 
 ---
-# [Task 6](task6)
+# [Task 6](task06)
 ## 6.1 Creare a ruby script
 ### It shows top 10 process in swap and sorts output by KB. It will ignore Zero values
 
@@ -72,7 +72,7 @@ performs occasional test queries to the hostname "google.com" to each of the DNS
 
 
 ---
-# [Task 7](task7)
+# [Task 7](task07)
 ### setup backend api to handle POST/PUT/PATCH and query value metadata by filtering metadata key
 
 * Technical scopes
@@ -88,7 +88,7 @@ Using helm to provision mongodb
 ```
 
 ---
-# [Task 8](task8)
+# [Task 8](task08)
 ### Istio 1.6.8 present canary deploy on minikube
 
 ---

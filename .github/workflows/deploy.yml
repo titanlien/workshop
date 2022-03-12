@@ -20,11 +20,11 @@ jobs:
       uses: matootie/github-docker@v2.2.1
       with:
         accessToken: ${{secrets.GITHUB_TOKEN}}
-        context: ./task3/web1/
+        context: ./task03/web1/
         imageName: web1
     - name: GitHub Docker Action
       uses: matootie/github-docker@v2.2.1
       with:
         accessToken: ${{secrets.GITHUB_TOKEN}}
-        context: ./task3/web2/
+        context: ./task03/web2/
         imageName: web2

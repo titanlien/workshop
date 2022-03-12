@@ -1,10 +1,10 @@
 .terraform/
 errored.tfstate
-task1/ansible/inventory
-task2/docker-compose.yml
-task2/nginx/nginx.conf
-task3/web_1.yml
-task3/web_2.yml
+task01/ansible/inventory
+task02/docker-compose.yml
+task02/nginx/nginx.conf
+task03/web_1.yml
+task03/web_2.yml
 task12/.cache/*
 
 .ipynb_checkpoints
