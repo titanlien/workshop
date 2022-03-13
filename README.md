@@ -119,3 +119,7 @@ $ authorize < operations
 ---
 # [Task 13](task13)
 ### Use FastAPI and sqlalchemy to create shortened URL similar to https://goo.gl/
+
+---
+# [Task 14](task14)
+### Using terraform to create a private s3 bucket and a authorized role(IAM) to upload file. Limiterd the IP of user as well.
