@@ -19,8 +19,14 @@ module "iam-s3-user" {
   source  = "cloudposse/iam-s3-user/aws"
   version = "0.15.9"
 
-  s3_resources = [module.s3-bucket.bucket_arn]
-  s3_actions   = ["s3:GetObject"]
+  s3_resources = [local.s3-arn-with-star]
+  s3_actions = [
+    "s3:PutObject",
+    "s3:PutObjectAcl",
+    "s3:GetObject",
+    "s3:GetObjectAcl",
+    "s3:DeleteObject",
+  ]
 
   name      = var.username
   namespace = var.namespace

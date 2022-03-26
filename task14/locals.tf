@@ -28,3 +28,7 @@ locals {
     }]
   }]
 }
+
+locals {
+  s3-arn-with-star = length(module.s3-bucket.bucket_arn) > 0 ? format("%s/%s", module.s3-bucket.bucket_arn, "*") : ""
+}
