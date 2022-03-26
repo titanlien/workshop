@@ -14,3 +14,15 @@ module "s3-bucket" {
   namespace = var.namespace
   stage     = var.env
 }
+
+module "iam-s3-user" {
+  source  = "cloudposse/iam-s3-user/aws"
+  version = "0.15.9"
+
+  s3_resources = [module.s3-bucket.bucket_arn]
+  s3_actions   = ["s3:GetObject"]
+
+  name      = var.username
+  namespace = var.namespace
+  stage     = var.env
+}

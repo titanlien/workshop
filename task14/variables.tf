@@ -12,3 +12,8 @@ variable "namespace" {
   type        = string
   description = "The name of function, e.g: web, backend, db"
 }
+
+variable "username" {
+  type        = string
+  description = "The name of end user to upload file to s3"
+}
