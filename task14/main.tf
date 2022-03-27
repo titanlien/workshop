@@ -37,3 +37,18 @@ module "iam-s3-user" {
   namespace = var.namespace
   stage     = var.env
 }
+
+resource "aws_iam_policy" "whitelist-policy" {
+  name        = "whitelist-policy"
+  description = "Reject all incoming request but excludes IPs in whitelistIPs and IPs of deployed host"
+  policy      = templatefile("${path.module}/whitelist-ip.json.tmpl", { whitelistIPs = local.whitelistIPs })
+}
+
+resource "aws_iam_user_policy_attachment" "whitelist-attach" {
+  user       = module.iam-s3-user.user_name
+  policy_arn = aws_iam_policy.whitelist-policy.arn
+}
+
+data "http" "admin_ip" {
+  url = "https://ipinfo.io/ip"
+}

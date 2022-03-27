@@ -32,3 +32,8 @@ locals {
 locals {
   s3-arn-with-star = length(module.s3-bucket.bucket_arn) > 0 ? format("%s/%s", module.s3-bucket.bucket_arn, "*") : ""
 }
+
+locals {
+  admin_ip_list = [format("%s/%s", data.http.admin_ip.body, "32")]
+  whitelistIPs  = length(var.whitelistIPs) == 0 ? local.admin_ip_list : concat(local.admin_ip_list, var.whitelistIPs)
+}
