@@ -119,3 +119,23 @@ $ authorize < operations
 ---
 # [Task 13](task13)
 ### Use FastAPI and sqlalchemy to create shortened URL similar to https://goo.gl/
+
+---
+# [Task 14](task14)
+### Using terraform to create a private s3 bucket and a authorized user(IAM) to upload files. Using WhitelistIPs to grant user's exteral public IP address permission to access bucket.
+#### :warning: When you provision this task, you can not depend on STS token. Because there is a lack support of STS to create a new IAM user. :warning:
+```yml
+# sample for whitelist to access s3 bucket
+whitelistIPs = ["127.0.0.1/32"]
+```
+
+```bash
+# get access_key from ssm
+aws ssm get-parameter --name /system_user/backup-dev-uploader/access_key_id --with-decryption | jq .Parameter.Value
+
+# get secret_key from ssm
+aws ssm get-parameter --name /system_user/backup-dev-uploader/secret_access_key --with-decryption | jq .Parameter.Value
+
+# terraform output
+bucket_domain_name = "backup-dev-upload-task14.s3.amazonaws.com"
+```

@@ -1,5 +1,7 @@
 .terraform/
 errored.tfstate
+.terraform.lock.hcl
+
 task01/ansible/inventory
 task02/docker-compose.yml
 task02/nginx/nginx.conf
