@@ -2,13 +2,14 @@ import logging
 import sys
 from typing import List
 
+sys.path.append("./app")
+
 import models
 from bson.objectid import ObjectId
 from config import DB, LOG_LEVEL, SERVE_PORT, close_db_client
 from fastapi import Body, FastAPI, HTTPException, Query
 from pydantic import PositiveInt
 
-sys.path.append(".")
 
 
 if SERVE_PORT is not None and SERVE_PORT.isdigit():
