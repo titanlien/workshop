@@ -18,7 +18,7 @@ defaults:
 
 jobs:
   tests:
-    name: Run Task07 Tests
+    name: Task07 Run Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
