@@ -30,7 +30,7 @@ resource "aws_spot_instance_request" "worker" {
   provisioner "remote-exec" {
     # The connection will use the local SSH agent for authentication
     inline = ["echo Successfully connected",
-              "wget ${var.java-app-url} -P ~/"]
+    "wget ${var.java-app-url} -P ~/"]
 
     connection {
       user        = "ubuntu"
@@ -66,11 +66,11 @@ resource "null_resource" "export" {
   }
 }
 
-output spot_instance_ids_worker {
+output "spot_instance_ids_worker" {
   description = "List of spot instance IDs of worker"
-  value = aws_spot_instance_request.worker.*.spot_instance_id
+  value       = aws_spot_instance_request.worker.*.spot_instance_id
 }
 
-output spot_instance_private_ip {
+output "spot_instance_private_ip" {
   value = aws_spot_instance_request.worker.*.private_ip
 }

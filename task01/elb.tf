@@ -1,7 +1,7 @@
 resource "aws_elb" "task1" {
-  name               = "elb-taks1"
+  name = "elb-taks1"
 
-  subnets          = module.vpc.public_subnets
+  subnets = module.vpc.public_subnets
   listener {
     instance_port     = 8080
     instance_protocol = "http"
@@ -23,7 +23,7 @@ resource "aws_elb" "task1" {
   connection_draining         = true
   connection_draining_timeout = 400
 
-  security_groups = [ aws_security_group.allow_task1.id ]
+  security_groups = [aws_security_group.allow_task1.id]
 
   depends_on = [module.worker]
 

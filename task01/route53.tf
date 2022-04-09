@@ -7,5 +7,5 @@ resource "aws_route53_record" "task1" {
   name    = "task1"
   type    = "CNAME"
   ttl     = "30"
-  records = [ aws_elb.task1.dns_name ]
+  records = [aws_elb.task1.dns_name]
 }

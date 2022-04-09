@@ -8,13 +8,13 @@ terraform {
 
 locals {
   regions = {
-    dev        = "eu-central-1"
-    staging    = "eu-central-1"
+    dev     = "eu-central-1"
+    staging = "eu-central-1"
   }
 
   worker_instance_count = {
-    dev        = "1"
-    staging    = "2"
+    dev     = "1"
+    staging = "2"
   }
 }
 
