@@ -1,0 +1,37 @@
+name: Task07 build and push webapp image
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - 'task07/**'
+    branches:
+      - master
+  push:
+    branches:
+      - master
+    paths:
+      - 'task07/**'
+
+defaults:
+  run:
+    working-directory: task07
+
+jobs:
+  build:
+    name: Task07 Build and push docker image
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish docker image
+        uses: matootie/github-docker@v3.1.0
+        id: publish-webapp
+        with:
+          accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
+          context: docker/app
+          imageName: webapp
+          tag: |
+            ${{ github.sha }}
+            latest

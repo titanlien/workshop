@@ -1,4 +1,4 @@
-name: Build and Push task03 docker image
+name: Task03 Build and Push docker image
 
 on:
   push:
