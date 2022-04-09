@@ -125,8 +125,10 @@ $ authorize < operations
 
 ---
 # [Task 14](task14)
-### Using terraform to create a private s3 bucket and a authorized user(IAM) to upload files. Using WhitelistIPs to grant user's exteral public IP address permission to access bucket.
-#### :warning: When you provision this task, you can not depend on STS token. Because there is a lack support of STS to create a new IAM user. :warning:
+### Using terraform to create a private s3 bucket and a authorized user(IAM) to upload files.
+### Using WhitelistIPs to grant user's exteral public IP address to have permission to access bucket.
+### Add terratest to test whole flow
+### :warning: When you provision this task, you can not depend on STS token. Because there is a lack support of STS to create a new IAM user. :warning:
 ```yml
 # sample for whitelist to access s3 bucket
 whitelistIPs = ["127.0.0.1/32"]
