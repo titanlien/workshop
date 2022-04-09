@@ -17,7 +17,11 @@ updates:
       time: "04:02"
     allow:
       - dependency-name: "ansible"
-        dependency-type: "production"
+    ignore:
+      - dependency-name: "ansible"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     labels:
       - "pip dependencies"
       - "bot"
