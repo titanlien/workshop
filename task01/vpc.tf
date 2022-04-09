@@ -36,9 +36,9 @@ module "vpc" {
 
   cidr = "172.16.0.0/16"
 
-  azs             = ["${local.regions[terraform.workspace]}a",
-                     "${local.regions[terraform.workspace]}b"]
-  public_subnets  = ["172.16.1.0/24", "172.16.2.0/24"]
+  azs = ["${local.regions[terraform.workspace]}a",
+  "${local.regions[terraform.workspace]}b"]
+  public_subnets = ["172.16.1.0/24", "172.16.2.0/24"]
 
   enable_nat_gateway = false
 
@@ -50,10 +50,10 @@ module "vpc" {
 }
 
 resource "aws_security_group_rule" "allow_internal" {
-  type            = "ingress"
-  from_port       = 0
-  to_port         = 65535
-  protocol        = "all"
-  self            = true
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  self              = true
   security_group_id = aws_security_group.allow_task1.id
 }
