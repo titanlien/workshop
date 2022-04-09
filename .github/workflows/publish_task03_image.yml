@@ -1,13 +1,19 @@
-name: Build and Push docker image
+name: Build and Push task03 docker image
 
 on:
   push:
     branches:
       - master
+    paths:
+      - 'task03/**'
   pull_request:
+    paths:
+      - 'task03/**'
     branches:
       - master
   release:
+    paths:
+      - 'task03/**'
     types:
       - created
 
