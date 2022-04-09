@@ -52,9 +52,9 @@ Output: "XXXVI"
 # Go tutorial on jupyter notebook
 ## Create html from ipynb
 ```bash
-jupyter nbconvert --execute task5/go_tuturial.ipynb --to html
+jupyter nbconvert --execute task05/go_tuturial.ipynb --to html
 ```
-[html preview](https://htmlpreview.github.io/?https://github.com/titanlien/workshop/blob/master/task5/go_tuturial.html)
+[html preview](https://htmlpreview.github.io/?https://github.com/titanlien/workshop/blob/master/task05/go_tuturial.html)
 
 ---
 # [Task 6](task06)
