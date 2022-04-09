@@ -9,3 +9,15 @@ updates:
       time: "04:00"
     labels:
       - "github-action dependencies"
+      - "bot"
+  - package-ecosystem: "pip"
+    directory: "/task01"
+    schedule:
+      interval: "daily"
+      time: "04:02"
+    allow:
+      - dependency-name: "ansible"
+        dependency-type: "production"
+    labels:
+      - "pip dependencies"
+      - "bot"
