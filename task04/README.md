@@ -1,11 +1,13 @@
 # Prepare python framework
 ```
-pipenv shell && pipenv sync
+pipenv shell
+pipenv sync
 ```
 
 # Test with pytest
 
 ```
+pipenv sync -dev
 python -m pytest test/
 ```
 
