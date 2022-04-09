@@ -1,0 +1,26 @@
+name: Task07 Tests
+
+on:
+  pull_request:
+    paths:
+      - 'task07/**'
+    branches:
+      - master
+  push:
+    branches:
+      - master
+    paths:
+      - 'task07/**'
+
+defaults:
+  run:
+    working-directory: task07
+
+jobs:
+  tests:
+    name: Run Task07 Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Unit Tests
+        run: make compose-test
