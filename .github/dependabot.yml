@@ -25,3 +25,11 @@ updates:
     labels:
       - "pip dependencies"
       - "bot"
+  - package-ecosystem: "pip"
+    directory: "/task02"
+    schedule:
+      interval: "daily"
+      time: "04:02"
+    labels:
+      - "pip dependencies"
+      - "bot"
