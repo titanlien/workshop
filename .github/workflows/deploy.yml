@@ -18,13 +18,15 @@ jobs:
     - uses: actions/checkout@v2
     - name: GitHub Docker Action
       uses: matootie/github-docker@v2.2.1
+      id: publish
       with:
-        accessToken: ${{secrets.PRIVATE_GITHUB_TOKEN}}
+        accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
         context: ./task03/web1/
         imageName: web1
     - name: GitHub Docker Action
       uses: matootie/github-docker@v2.2.1
+      id: publish
       with:
-        accessToken: ${{secrets.PRIVATE_GITHUB_TOKEN}}
+        accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
         context: ./task03/web2/
         imageName: web2
