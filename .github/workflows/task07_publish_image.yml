@@ -33,5 +33,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
+          workdir: task07
           context: docker/app
           tags: "${{ github.sha }},latest"
