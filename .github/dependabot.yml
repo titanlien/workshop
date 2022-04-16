@@ -57,3 +57,19 @@ updates:
     labels:
       - "pip dependencies"
       - "bot"
+  - package-ecosystem: "docker"
+    directory: "/task07/docker/app"
+    schedule:
+      interval: "daily"
+      time: "04:04"
+    labels:
+      - "docker dependencies"
+      - "bot"
+  - package-ecosystem: "docker"
+    directory: "/task07/docker/test"
+    schedule:
+      interval: "daily"
+      time: "04:04"
+    labels:
+      - "docker dependencies"
+      - "bot"
