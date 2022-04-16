@@ -28,11 +28,11 @@ jobs:
       with:
         accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
         context: ./task03/web1/
-        imageName: web1
+        imageName: task03-web1
     - name: GitHub Docker Action
       uses: matootie/github-docker@v3.1.0
       id: publish-web2
       with:
         accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
         context: ./task03/web2/
-        imageName: web2
+        imageName: task03-web2
