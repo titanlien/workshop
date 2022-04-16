@@ -54,6 +54,8 @@ updates:
     schedule:
       interval: "daily"
       time: "04:02"
+    ignore:
+      - dependency-name: "fastapi"
     labels:
       - "pip dependencies"
       - "bot"
