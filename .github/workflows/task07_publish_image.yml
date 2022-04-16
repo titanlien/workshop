@@ -34,5 +34,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
           workdir: task07
-          context: docker/app
-          tags: "${{ github.sha }},latest"
+          context: .
+          dockerfile: docker/app/Dockerfile
+          snapshot: true
+          tag_semver: true
