@@ -11,7 +11,7 @@ requests = "*"
 faker = "*"
 
 [packages]
-fastapi = "*"
+fastapi = "==0.54.1"
 uvicorn = "*"
 motor = "*"
 pyyaml = "*"
