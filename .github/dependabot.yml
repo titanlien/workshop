@@ -54,6 +54,10 @@ updates:
     schedule:
       interval: "daily"
       time: "04:02"
+    ignore:
+      - update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     labels:
       - "pip dependencies"
       - "bot"
@@ -62,6 +66,10 @@ updates:
     schedule:
       interval: "daily"
       time: "04:04"
+    ignore:
+      - update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     labels:
       - "docker dependencies"
       - "bot"
@@ -70,6 +78,10 @@ updates:
     schedule:
       interval: "daily"
       time: "04:04"
+    ignore:
+      - update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     labels:
       - "docker dependencies"
       - "bot"
