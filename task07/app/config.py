@@ -9,7 +9,7 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT", "local")
 
 
 def load_config() -> dict:
-    """Load mongo DB configure from config.yml file"""
+    """Load mongo DB configure from config.yml  file"""
     conf = {}
     with open("app/config.yml") as yaml_file:
         conf = yaml.load(yaml_file.read(), Loader=yaml.SafeLoader)
