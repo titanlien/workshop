@@ -10,8 +10,6 @@ from config import DB, LOG_LEVEL, SERVE_PORT, close_db_client
 from fastapi import Body, FastAPI, HTTPException, Query
 from pydantic import PositiveInt
 
-
-
 if SERVE_PORT is not None and SERVE_PORT.isdigit():
     SERVE_PORT = int(SERVE_PORT)
 else:
@@ -26,7 +24,7 @@ app = FastAPI()
 
 
 def validate_object_id(id_: str):
-    """ verify the obj type is ObjectId
+    """verify the obj type is ObjectId
 
     :param id_: the document's id in mongo DB
     :raise HTTPException if the id_'s type is not ObjectId
@@ -39,7 +37,7 @@ def validate_object_id(id_: str):
 
 
 async def _get_404(id_: str, coll: str):
-    """ verify the obj id is exist
+    """verify the obj id is exist
 
     :param id_: the document's id in mongo DB
     :param coll: collection's name
@@ -54,7 +52,7 @@ async def _get_404(id_: str, coll: str):
 
 
 def fix_obj_id(obj):
-    """ change the Id's type from ObjectId to string for iterator
+    """change the Id's type from ObjectId to string for iterator
 
     :raise ValueError obj.id not found
     """
@@ -72,15 +70,14 @@ async def app_shutdown():
 
 @app.get("/")
 async def health_check():
-    """ It's application heart beat, to make sure app still alive
-    """
+    """It's application heart beat, to make sure app still alive"""
     logger.debug(f"Call root URL")
     return {"Running": True}
 
 
 @app.get("/configs/", response_model=List[models.metadata])
 async def list_all(limit: PositiveInt = 10, skip: PositiveInt = 0) -> list:
-    """ List all collection's (exclude system's) documents.
+    """List all collection's (exclude system's) documents.
 
     :param limit: limit how many documents list at once in each collection.
     :param skip: skip the first amounts in collections
@@ -101,7 +98,7 @@ async def list_all(limit: PositiveInt = 10, skip: PositiveInt = 0) -> list:
 
 @app.post("/configs/", response_model=List[models.metadata])
 async def create(bodies: List[models.metadata] = Body(...)):
-    """ Add new document into monitor or nutrition collection
+    """Add new document into monitor or nutrition collection
 
     :param bodies: it's mmandatory, it could be monitor or nutrition
     """
@@ -123,7 +120,7 @@ async def create(bodies: List[models.metadata] = Body(...)):
 
 @app.get("/configs/{name}", response_model=List[models.metadata])
 async def get_by_name(name: str, limit: PositiveInt = 10):
-    """ List document by name, it will print all documents in the same collection
+    """List document by name, it will print all documents in the same collection
 
     :param name: depend on name to filter the documents
     :return List of documents
@@ -142,7 +139,7 @@ async def get_by_name(name: str, limit: PositiveInt = 10):
 @app.put("/configs/{name}", response_model=List[models.metadata])
 @app.patch("/configs/{name}", response_model=List[models.metadata])
 async def update_by_name(name: str, data: models.metadata):
-    """ Updateing one document by name, we have to patch the whole object's info
+    """Updateing one document by name, we have to patch the whole object's info
 
     :param name: the document's name
     :param data: the updated object's info
@@ -170,7 +167,7 @@ async def update_by_name(name: str, data: models.metadata):
 
 @app.delete("/configs/{name}", response_model=dict)
 async def delete_by_name(name: str):
-    """ Delete document by its name, delete one ducument at once
+    """Delete document by its name, delete one ducument at once
 
     :return how many document been deleted
     """
@@ -185,7 +182,7 @@ async def delete_by_name(name: str):
 
 @app.get("/search/{metadata_key}={value}", response_model=List[models.metadata])
 async def query(metadata_key: str, value: str, limit: PositiveInt = 10):
-    """ Query the documents by metadata key
+    """Query the documents by metadata key
 
     :param metadata_key: it's filter string, e.g: metadata.allergens.eggs
     :param value: the value of metadata_key

@@ -45,8 +45,7 @@ class nutrition_meta(BaseModel):
 
 
 class metadata(BaseModel):
-    """ check the schema of metadata is match with monitor and nuttition
-    """
+    """check the schema of metadata is match with monitor and nuttition"""
 
     name: str
     metadata: Union[monitor_meta, nutrition_meta]
