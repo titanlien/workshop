@@ -1,3 +1,6 @@
+![Mao-Hsiang's GitHub stats](https://github-readme-stats.vercel.app/api?username=titanlien&show_icons=true&theme=ocean_dark)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=titanlien&hide=c,perl,html,java,objective-c,css&theme=ocean_dark)](https://github.com/anuraghazra/github-readme-stats)
 # workshop
 # [Task 1](task01)
 ## Terraform + AWS + Ansible
