@@ -26,12 +26,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Publish docker image
-        uses: matootie/github-docker@v3.1.0
+        uses: elgohr/Publish-Docker-Github-Action@v4
         id: publish-webapp
         with:
-          accessToken: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
+          name: titanlien/workshop/webapp
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
           context: docker/app
-          imageName: webapp
-          tag: |
-            ${{ github.sha }}
-            latest
+          tags: "${{ github.sha }},latest"
