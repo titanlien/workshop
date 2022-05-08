@@ -1,0 +1,117 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web
+  labels:
+    app: go-web
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-web
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: go-web
+        version: v1
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8080'
+    spec:
+      containers:
+        - name: go-web
+          image: k3d-registry.localhost:12345/task15-go:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+          - name: container-port
+            containerPort: 8080
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /healthy
+              port: container-port
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 1
+            httpGet:
+              scheme: HTTP
+              path: /healthy
+              port: container-port
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-web
+  labels:
+    app: java-web
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: java-web
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: java-web
+        version: v1
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8080'
+    spec:
+      containers:
+        - name: java-web
+          image: k3d-registry.localhost:12345/task15-java:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          ports:
+          - name: container-port
+            containerPort: 8080
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /health
+              port: container-port
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 1
+            httpGet:
+              scheme: HTTP
+              path: /health
+              port: container-port
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          startupProbe:
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 30
+            httpGet:
+              path: /health
+              port: container-port
