@@ -142,3 +142,54 @@ aws ssm get-parameter --name /system_user/backup-dev-uploader/secret_access_key 
 # terraform output
 bucket_domain_name = "backup-dev-upload-task14.s3.amazonaws.com"
 ```
+---
+# [Task 15](task15)
+
+You will find two applications: A Golang-based and a Java-based application. Both need to be
+containerized according to industry best practices. The Golang application needs to be compiled from
+source, while the Java application is delivered as a pre-built Jar file, runnable using Java 11.
+Both are providing an HTTP service, binding to all interfaces on port 8080, with the same endpoints:
+| Route | Description |
+|-----------|---------------------------------------------------------------|
+| / | A static site. Should *not* appear in the final setup |
+| /hotels | JSON object containing hotel search results |
+| /health | Exposes the health status of the application |
+| /ready | Readiness probe |
+| /metrics | Exposes Prometheus metrics of the application |
+
+Your challenge will be to provide a load balancer setup like the following:
+```bash
+                            +------------------>Java app
+                            |
+                            |
+                            |
+                            30% of traffic
+                            |
+                            |
+User +-------> load balancer+
+                            |
+                            |
+                            70% of traffic
+                            |
+                            |
+                            |
+                            +------------------>Go app
+```
+
+The traffic distribution should be as follows: 70% of the requests are going to the application written in
+Golang, 30% of the requests are going to the application written in Java. Also, each HTTP response needs
+to carry a custom header, called x-trv-heritage which indicates the application that responded.
+Your implementation must be runnable on a machine using x86_64 CPU architecture and must be built
+on top of Kubernetes.
+One should be able to at least see that the traffic distribution works as expected in some form. As a
+bonus, you can try to show other metrics, like CPU usage, memory utilization, and latency as well to
+compare the two services.
+Your implementation should:
+
+- Build both container images locally
+- Find a solution to make them available to a Kubernetes cluster
+- Do not push them to a public registry on the internet!
+- Setup an ingress solution of your choice
+- Deploy both workloads
+- Wait for the readiness of the system
+- Run 100 requests against / of the applications under test

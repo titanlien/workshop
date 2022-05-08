@@ -8,6 +8,7 @@ task02/nginx/nginx.conf
 task03/web_1.yml
 task03/web_2.yml
 task12/.cache/*
+task15/app/golang-webserver/build/*
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*

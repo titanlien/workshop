@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web
+  labels:
+    app: go-web
+    service: go-web
+spec:
+  selector:
+    app: go-web
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-web
+  labels:
+    app: java-web
+    service: java-web
+spec:
+  selector:
+    app: java-web
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http
+  type: ClusterIP
