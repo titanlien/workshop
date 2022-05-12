@@ -193,3 +193,31 @@ Your implementation should:
 - Deploy both workloads
 - Wait for the readiness of the system
 - Run 100 requests against / of the applications under test
+
+---
+# [Task 16](task16)
+```bash
+You are tasked with the creation of a small infrastructure stack on
+AWS:
+* Deploy a redundant and scalable EKS cluster
+* Deploy on the cluster a simple Web Server application, exposing on
+the public internet a simple home page with a custom message.
+* Provide basic monitoring for your infrastructure *[Optional Task]*
+* Increase the scalability of the stack *[Optional Task]*
+* Provide cost estimations *[Optional Task]*
+```
+
+### Functional
+#### EKS
+* `EKS` cluster must consist of at least 3 `Worker Nodes`
+* `Worker Nodes` should be distributed on at least `2 AZ`
+* `Worker Nodes` should be assigned to at least `2 Worker Groups`
+* You must run the latest version of `EKS-1.21`
+#### Web Server
+* Deploy, using `Helm`, a web server of your choice on the above
+running cluster.
+* The deployment should span the 2AZ where EKS nodes are spread, and
+have a minimal redundancy.
+* Customise the web server in order to show a home page with custom
+message like "Hello bot, welcome to your simple web page"
+* Expose securely the page in order to be reached from public internet
