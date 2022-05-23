@@ -95,7 +95,7 @@ kubectl get --raw "/apis/custom.metrics.k8s.io/v1beta1/namespaces/web-app/ingres
   ]
 }
 ```
-[demo in asciinema](https://asciinema.org/a/ZLwrrRhGaQUXtTy51x9UPykdt)
+[demo in asciinema](https://asciinema.org/a/JwIcHOZdaOz4LXyKsMxNaRJaF)
 
 ### Terraform reference
 - [aws_autoscaling_group.instance_refresh](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#instance_refresh)
