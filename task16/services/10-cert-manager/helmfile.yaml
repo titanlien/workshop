@@ -1,0 +1,53 @@
+bases:
+  - ../base.yaml
+---
+repositories:
+  # Kubernetes incubator for creating issuer
+  - name: "kubernetes-incubator"
+    url: "https://charts.helm.sh/incubator"
+
+releases:
+  - name: cert-manager
+    chart: jetstack/cert-manager
+    namespace: cert-manager
+    labels:
+      chart: "cert-manager"
+      repo: "stable"
+      component: "cert-manager"
+      namespace: "cert-manager"
+      vendor: "jetstack"
+    version: 1.8.0
+    installed: true
+    values:
+      - values.yaml
+
+  - name: 'cert-manager-issuers'
+    chart: "kubernetes-incubator/raw"
+    needs: ['cert-manager/cert-manager']
+    namespace: "cert-manager"
+    labels:
+      component: "cert-manager"
+      namespace: "cert-manager"
+    version: 0.2.5
+    wait: true
+    timeout: 120
+    atomic: true
+    cleanupOnFail: true
+    disableValidationOnInstall: true
+    values:
+    - resources:
+      - apiVersion: cert-manager.io/v1
+        kind: ClusterIssuer
+        metadata:
+          name: letsencrypt-isrg
+        spec:
+          acme:
+            server: https://acme-v02.api.letsencrypt.org/directory
+            preferredChain: "ISRG Root X1"
+            email: "info@mhlien.tw"
+            privateKeySecretRef:
+              name: letsencrypt-isrg
+            solvers:
+            - http01:
+                ingress:
+                  class:  nginx

@@ -1,0 +1,17 @@
+bases:
+  - ../base.yaml
+---
+releases:
+  - name: ingress-nginx
+    namespace: ingress-nginx
+    labels:
+      chart: "ingress-nginx"
+      repo: "stable"
+      component: "ingress-nginx"
+      namespace: "ingress-nginx"
+      vendor: "ingress-nginx"
+    chart: ingress-nginx/ingress-nginx
+    version: "~4.1"
+    installed: false
+    values:
+      - values.yaml

@@ -1,0 +1,44 @@
+image:
+  repository: gcr.io/google-samples/hello-app
+  tag: "2.0"
+containerPorts:
+  http: 8080
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 11
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50
+metrics:
+  enabled: true
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-isrg"
+  hosts:
+    - host: ing.mhlien.tw
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - ing.mhlien.tw
+    secretName: ingress-demo-tls
+

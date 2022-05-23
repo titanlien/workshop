@@ -1,0 +1,16 @@
+prometheus:
+  url: http://prometheus-server.prometheus.svc
+  port: 80
+rules:
+  custom:
+  - seriesQuery: '{__name__=~"^nginx_ingress_controller_requests.*",namespace!=""}'
+    seriesFilters: []
+    resources:
+      template: <<.Resource>>
+      overrides:
+        service: {resource: "services"}
+        namespace: {resource: "namespace"}
+    name:
+      matches: ""
+      as: "nginx_ingress_controller_requests_rate"
+    metricsQuery: round(sum(rate(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>), 0.001)
