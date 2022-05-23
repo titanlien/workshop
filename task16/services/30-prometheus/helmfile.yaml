@@ -1,0 +1,22 @@
+bases:
+  - ../base.yaml
+---
+releases:
+  - name: prometheus
+    namespace: prometheus
+    labels:
+      app: prometheus
+    chart: prometheus-community/prometheus
+    version: ~15.8
+    installed: true
+    values:
+      - values.yaml
+  - name: prometheus-adapter
+    namespace: prometheus
+    labels:
+      app: prometheus-adapter
+    chart: prometheus-community/prometheus-adapter
+    version: ~3.2
+    installed: true
+    values:
+      - adapter-values.yaml

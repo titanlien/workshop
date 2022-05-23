@@ -1,0 +1,12 @@
+bases:
+  - ../base.yaml
+---
+releases:
+  - name: web-app
+    namespace: web-app
+    labels:
+      app: web-app
+    chart: ../../charts/web-app
+    version: ~0.1
+    values:
+      - values.yaml

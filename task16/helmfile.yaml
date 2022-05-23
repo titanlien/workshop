@@ -1,0 +1,2 @@
+helmfiles:
+  - path: services/*/helmfile.yaml

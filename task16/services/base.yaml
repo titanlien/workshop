@@ -1,0 +1,19 @@
+repositories:
+  # kube-prometheus-stack (former prometheus-operator)
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  # loki
+  #- name: loki
+  #  url: https://grafana.github.io/helm-charts
+  # external-dns
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  # nginx-ingress updated version
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+  # Add the Jetstack for cert-manager
+  - name: jetstack
+    url: "https://charts.jetstack.io"
+
+helmDefaults:
+  tillerless: true
