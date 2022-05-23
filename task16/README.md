@@ -34,7 +34,6 @@ aws eks --region eu-central-1 update-kubeconfig --name task16-task16
 ![HPA overview](./media/HPA.svg)
 ```bash
 ## web-app helm chart
-tree
 charts/
 └── web-app
     ├── Chart.yaml
@@ -59,11 +58,11 @@ services/
 ├── 10-ingress
 │   ├── helmfile.yaml
 │   └── values.yaml
-├── 20-app
+├── 20-prometheus
+│   ├── adapter-values.yaml
 │   ├── helmfile.yaml
 │   └── values.yaml
-├── 30-prometheus
-│   ├── adapter-values.yaml
+├── 30-app
 │   ├── helmfile.yaml
 │   └── values.yaml
 └── base.yaml
