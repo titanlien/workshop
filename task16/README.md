@@ -4,7 +4,7 @@
 	- dynamoDB: tfstate-demo-state-backend
 	- kms key: alias/tfstate-demo-default
 - helm diff plugin: helm plugin install https://github.com/databus23/helm-diff
-- Add A record to `ing.mhlien.tw`
+- Add A record to `ing.mhlien.de`
 
 ## This task includes two parts. First, using `terraform` to deploy EKS and cluster-autoscaler, Second using `helmfile` to deploy a sample web-app with HPA.
 
