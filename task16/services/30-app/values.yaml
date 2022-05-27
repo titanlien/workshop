@@ -33,12 +33,12 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-isrg"
   hosts:
-    - host: ing.mhlien.tw
+    - host: ing.mhlien.de
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
   - hosts:
-    - ing.mhlien.tw
+    - ing.mhlien.de
     secretName: ingress-demo-tls
 

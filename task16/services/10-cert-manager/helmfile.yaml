@@ -44,7 +44,7 @@ releases:
           acme:
             server: https://acme-v02.api.letsencrypt.org/directory
             preferredChain: "ISRG Root X1"
-            email: "info@mhlien.tw"
+            email: "info@mhlien.de"
             privateKeySecretRef:
               name: letsencrypt-isrg
             solvers:
