@@ -16,14 +16,6 @@
         ]
     },
     "default": {
-        "asgiref": {
-            "hashes": [
-                "sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4",
-                "sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424"
-            ],
-            "markers": "python_version >= '3.7'",
-            "version": "==3.5.2"
-        },
         "click": {
             "hashes": [
                 "sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e",
@@ -274,11 +266,11 @@
         },
         "uvicorn": {
             "hashes": [
-                "sha256:19e2a0e96c9ac5581c01eb1a79a7d2f72bb479691acd2b8921fce48ed5b961a6",
-                "sha256:5180f9d059611747d841a4a4c4ab675edf54c8489e97f96d0583ee90ac3bfc23"
+                "sha256:ba66bccb012a1662ef0de7d8c5ec416a6dcf5d9f64c274f8df67d2df44a4b0b1",
+                "sha256:fde065bc11c05025fbb33f7602826e7520237c45a67ffa040993ae04ad4d7ab3"
             ],
             "index": "pypi",
-            "version": "==0.17.6"
+            "version": "==0.18.0"
         },
         "zipp": {
             "hashes": [
