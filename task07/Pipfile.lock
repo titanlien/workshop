@@ -266,11 +266,11 @@
         },
         "uvicorn": {
             "hashes": [
-                "sha256:ba66bccb012a1662ef0de7d8c5ec416a6dcf5d9f64c274f8df67d2df44a4b0b1",
-                "sha256:fde065bc11c05025fbb33f7602826e7520237c45a67ffa040993ae04ad4d7ab3"
+                "sha256:013c4ea0787cc2dc456ef4368e18c01982e6be57903e4d3183218e543eb889b7",
+                "sha256:35703e6518105cfe53f16a5a9435db3e2e227d0784f1fd8fbc1214b1fdc108df"
             ],
             "index": "pypi",
-            "version": "==0.18.0"
+            "version": "==0.18.1"
         },
         "zipp": {
             "hashes": [
@@ -303,7 +303,7 @@
                 "sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597",
                 "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"
             ],
-            "markers": "python_full_version >= '3.5.0'",
+            "markers": "python_version >= '3.5'",
             "version": "==2.0.12"
         },
         "coverage": {
@@ -369,7 +369,7 @@
                 "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff",
                 "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
             ],
-            "markers": "python_full_version >= '3.5.0'",
+            "markers": "python_version >= '3.5'",
             "version": "==3.3"
         },
         "importlib-metadata": {
