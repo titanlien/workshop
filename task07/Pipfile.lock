@@ -266,11 +266,11 @@
         },
         "uvicorn": {
             "hashes": [
-                "sha256:ba66bccb012a1662ef0de7d8c5ec416a6dcf5d9f64c274f8df67d2df44a4b0b1",
-                "sha256:fde065bc11c05025fbb33f7602826e7520237c45a67ffa040993ae04ad4d7ab3"
+                "sha256:c19a057deb1c5bb060946e2e5c262fc01590c6529c0af2c3d9ce941e89bc30e0",
+                "sha256:cade07c403c397f9fe275492a48c1b869efd175d5d8a692df649e6e7e2ed8f4e"
             ],
             "index": "pypi",
-            "version": "==0.18.0"
+            "version": "==0.18.2"
         },
         "zipp": {
             "hashes": [
