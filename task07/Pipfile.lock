@@ -367,11 +367,11 @@
         },
         "faker": {
             "hashes": [
-                "sha256:0c7d283a96c49af64fe319f70d2b68927873c9173e922f8eda6001e7757cb63b",
-                "sha256:f1558ecb1770d8c871ea01cc2edc7b5e86148b0fa0466731f0e1e8953165d179"
+                "sha256:067a03f64e555261610e69277536072997b4576dbf84b113faef3c06d85b466b",
+                "sha256:0e00bfa1eadf1493f15662edb181222fea4847764cf3f9ff3e66ee0f95c9a644"
             ],
             "index": "pypi",
-            "version": "==14.0.0"
+            "version": "==14.1.0"
         },
         "idna": {
             "hashes": [
