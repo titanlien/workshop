@@ -1,4 +1,4 @@
-FROM python:3.7.14
+FROM python:3.7.15
 
 # To enable the --no-cache-dir, a falsy value is needed
 ENV PIP_NO_CACHE_DIR false
