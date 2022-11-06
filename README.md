@@ -221,3 +221,8 @@ have a minimal redundancy.
 * Customise the web server in order to show a home page with custom
 message like "Hello bot, welcome to your simple web page"
 * Expose securely the page in order to be reached from public internet
+
+---
+# [Task 17](task17)
+* Present k8s with digitalocean provider, using resource digitalocean_kubernetes_cluster and digitalocean_kubernetes_node_pool.
+* Deploy bitnami/nginx-ingress-controller helm chart by using resource helm_release.
