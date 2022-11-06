@@ -9,6 +9,8 @@ task03/web_1.yml
 task03/web_2.yml
 task12/.cache/*
 task15/app/golang-webserver/build/*
+task17/terraform.tfstate
+task17/terraform.tfstate.backup
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
