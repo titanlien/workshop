@@ -65,7 +65,7 @@ def fix_obj_id(obj):
 
 @app.on_event("shutdown")
 async def app_shutdown():
-    close_db_client()
+    pass  # close_db_client()
 
 
 @app.get("/")
