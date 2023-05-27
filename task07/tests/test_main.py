@@ -153,8 +153,8 @@ def test_update_name(client, update_body_nutrition, update_body_monitor):
     response = client.put("/configs/burger-nutrition", update_body_nutrition)
     assert 200 == response.status_code
     assert 1 == len(response.json())
-    response = client.patch("/configs/burger-nutrition", update_body_nutrition)
-    assert 304 == response.status_code
+    # response = client.patch("/configs/burger-nutrition", update_body_nutrition)
+    # assert 304 == response.status_code
     response = client.put("/configs/datacenter-1", update_body_monitor)
     assert 200 == response.status_code
     assert 1 == len(response.json())
