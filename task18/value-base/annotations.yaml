@@ -1,0 +1,4 @@
+podAnnotations:
+  region: base
+  name: base
+  zone: base

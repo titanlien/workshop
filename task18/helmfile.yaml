@@ -1,0 +1,34 @@
+environments:
+  default:
+    values:
+      - &db_ssl value-base/ssl.yaml
+      - value-base/annotations.yaml
+  europe:
+    values:
+      - *db_ssl
+      - value-regions/europe.yaml
+      - value-regions/berlin.yaml
+    kubeContext: k3d-1.24
+  asia:
+    values:
+      - *db_ssl
+      - value-regions/asia.yaml
+    kubeContext: k3d-1.24
+  taiwan:
+    values:
+      - *db_ssl
+      - value-base/annotations.yaml
+      - value-regions/asia.yaml
+      - value-regions/taiwan.yaml
+    kubeContext: k3d-1.24
+
+---
+releases:
+  - name: "mao-{{ .Environment.Name }}"
+    namespace: "mao-{{ .Environment.Name }}"
+    chart: restaurant
+    labels:
+      name: app
+    version: 0.1.0
+    values:
+      - {{ toYaml .StateValues | nindent 10 }}

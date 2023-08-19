@@ -226,3 +226,7 @@ message like "Hello bot, welcome to your simple web page"
 # [Task 17](task17)
 * Present k8s with digitalocean provider, using resource digitalocean_kubernetes_cluster and digitalocean_kubernetes_node_pool.
 * Deploy bitnami/nginx-ingress-controller helm chart by using resource helm_release.
+
+---
+# [Task 18](task18)
+* A simple example to present how `helmfile` can depend on includeing vaules.yaml from different directory to share the common setting between landscape.

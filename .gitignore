@@ -11,6 +11,7 @@ task12/.cache/*
 task15/app/golang-webserver/build/*
 task17/terraform.tfstate
 task17/terraform.tfstate.backup
+task18/helmfile-*/*.yaml
 
 .ipynb_checkpoints
 */.ipynb_checkpoints/*

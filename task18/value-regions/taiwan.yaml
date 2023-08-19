@@ -1,0 +1,6 @@
+image:
+  tag: taiwan
+podAnnotations:
+  zone: asia
+  food: beef-noodles
+db_cert: Taiwan_SSL

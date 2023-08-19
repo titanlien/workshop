@@ -1,0 +1,5 @@
+image:
+  tag: asia
+podAnnotations:
+  zone: asia
+  food: rices
