@@ -21,6 +21,6 @@ jobs:
     name: Task07 Run Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Run Unit Tests
         run: make compose-test
